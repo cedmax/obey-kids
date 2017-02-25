@@ -1,0 +1,23 @@
+.star {
+  flex: 0 0 33%;
+  filter: grayscale(100%) drop-shadow(5px 5px 3px black);
+  opacity: 0.6;
+
+  svg {
+    width: 100%;
+  }
+
+  &:first-child  {
+    transform: translateY(-3%);
+  }
+}
+
+.selected {
+  filter: drop-shadow(15px 15px 10px black);
+  opacity: 1;
+}
+
+.active {
+  cursor: pointer;
+}
+
