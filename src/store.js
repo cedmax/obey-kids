@@ -20,8 +20,15 @@ class Kid {
 }
 
 class Store {
+  @observable user = null;
+  
   constructor() {
     this.kids = [];
+    this.onLogin = this.onLogin.bind(this);
+  }
+
+  onLogin(user) {
+    this.user = user;
   }
 
   addKid(name, stars) {

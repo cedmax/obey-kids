@@ -9,7 +9,7 @@ store.addKid('Marcello', 3);
 
 render(
   <AppContainer>
-    <App {...store} />
+    <App appState={store} />
   </AppContainer>,
   document.getElementById('root')
 );
@@ -20,7 +20,7 @@ if (module.hot) {
 
     render(
       <AppContainer>
-        <NextApp {...store} />
+        <NextApp appState={store} />
       </AppContainer>,
       document.getElementById('root')
     );
