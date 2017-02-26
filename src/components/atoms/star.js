@@ -59,7 +59,10 @@ export default class Star extends Component {
       soundElm = <Beep direction={this.state.direction} />;
     }
     return (
-      <div className={ className }><SVGInline onClick={onClick} svg={ star } /> {soundElm}</div>
+      <div className={ className }>
+        <SVGInline onClick={ onClick } svg={ star } /> 
+        {soundElm}
+      </div>
     );
   }
 }
