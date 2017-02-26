@@ -31,7 +31,7 @@ export default class App extends Component {
 
     if (!kids.length) {
       return (
-        <AddKids addKid={(name) => addKid(name, 3)} />
+        <AddKids addKid={(name) => name && addKid(name, 3)} />
       );
     }
     
