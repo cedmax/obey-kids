@@ -48,8 +48,8 @@ export default class Star extends Component {
     const star = stars[type];
     const className = cx(style.star, {
       'animated': !!this.state.direction,
-      'headShake': this.state.direction === 'down',
-      'tada': this.state.direction === 'up',
+      'headShake': (this.state.direction === 'down'),
+      'tada': (this.state.direction === 'up'),
       [style.active]: active,
       [style.selected]: selected
     });
