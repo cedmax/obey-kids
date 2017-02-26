@@ -25,7 +25,8 @@ module.exports = {
   ],
   resolve: {
     modulesDirectories: ['node_modules','src', 'assets'],
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
+    alias: { soundmanager2: 'soundmanager2/script/soundmanager2-nodebug-jsmin.js' }
   },
   module: {
     loaders: [{
