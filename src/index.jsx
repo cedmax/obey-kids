@@ -4,9 +4,6 @@ import { AppContainer } from 'react-hot-loader';
 import store from 'Store';
 import App from 'App';
 
-store.addKid('Arturo', 3);
-store.addKid('Marcello', 3);
-
 render(
   <AppContainer>
     <App appState={store} />

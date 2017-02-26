@@ -1,11 +1,10 @@
 import React, { PropTypes } from 'react';
+import AddKid from 'components/molecules/add-kid';
 
-export default function AddKids() {
+export default function AddKids(props) {
   return (
-    <div></div>
+    <div>
+      <AddKid {...props} />
+    </div>
   );
 }
-
-AddKids.propTypes = {
-  onLogin: PropTypes.func.isRequired
-};

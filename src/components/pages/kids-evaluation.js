@@ -16,7 +16,7 @@ export default class KidsEvaluation extends Component {
     const {
       kids
     } = this.props;
-    
+
     const kidsComponents = kids.map(mapKids);
     return (
       <div>{kidsComponents}</div>

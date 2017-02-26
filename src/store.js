@@ -21,10 +21,11 @@ class Kid {
 
 class Store {
   @observable user = null;
+  @observable kids = [];
   
   constructor() {
-    this.kids = [];
     this.onLogin = this.onLogin.bind(this);
+    this.addKid = this.addKid.bind(this);
   }
 
   onLogin(user) {

@@ -29,14 +29,14 @@ export default class App extends Component {
       );
     } 
 
-    if (!kids) {
+    if (!kids.length) {
       return (
-        <AddKids addKid={addKid} />
+        <AddKids addKid={(name) => addKid(name, 3)} />
       );
     }
     
     return (
-      <KidsEvaluation kids={kids} />
+      <KidsEvaluation kids={[...kids]} />
     );
   }
 }
