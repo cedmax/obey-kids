@@ -1,10 +1,11 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import SVGInline from 'react-svg-inline';
 import cx from 'classnames';
 import normal from 'svg/normal-star.svg';
 import better from 'svg/better-star.svg';
 import boom from 'svg/boom-star.svg';
 import style from 'styles/star.scss';
+import Beep from 'components/atoms/beep';
 
 const stars = {
   normal,
@@ -12,23 +13,55 @@ const stars = {
   boom
 };
 
-export default function Star(props) {
-  const {
-    selected,
-    active,
-    type,
-    onClick
-  } = props;
+export default class Star extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      direction: null
+    };
+  }
 
-  const star = stars[type];
-  const className = cx(style.star, {
-    [style.active]: active,
-    [style.selected]: selected
-  });
+  componentWillReceiveProps(nextProps) {
+    if (this.props.selected && !nextProps.selected) {
+      this.setState({
+        direction: 'down'
+      });
+    } else if (!this.props.selected && nextProps.selected) {
+      this.setState({
+        direction: 'up'
+      });
+    } else {
+      this.setState({
+        direction: null
+      });
+    }
+  }
 
-  return (
-    <SVGInline onClick={onClick} className={ className } svg={ star } />
-  );
+  render () {
+    const {
+      selected,
+      active,
+      type,
+      onClick
+    } = this.props;
+
+    const star = stars[type];
+    const className = cx(style.star, {
+      'animated': !!this.state.direction,
+      'headShake': this.state.direction === 'down',
+      'tada': this.state.direction === 'up',
+      [style.active]: active,
+      [style.selected]: selected
+    });
+    
+    let soundElm;
+    if (this.state.direction) {
+      soundElm = <Beep direction={this.state.direction} />;
+    }
+    return (
+      <div className={ className }><SVGInline onClick={onClick} svg={ star } /> {soundElm}</div>
+    );
+  }
 }
 
 Star.propTypes = {
