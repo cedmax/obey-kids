@@ -68,5 +68,8 @@ Star.propTypes = {
   active: PropTypes.bool.isRequired,
   selected: PropTypes.bool.isRequired,
   type: PropTypes.string.isRequired,
-  onClick: PropTypes.func
+  onClick: React.PropTypes.oneOfType([
+    React.PropTypes.func,
+    React.PropTypes.bool
+  ])
 };
