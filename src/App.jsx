@@ -1,6 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import Kid from 'components/organisms/kid';
+import Login from 'components/pages/login';
+import AddKids from 'components/pages/add-kids';
+import KidsEvaluation from 'components/pages/kids-evaluation';
 
 function mapKids(kid) {
   return (
@@ -14,14 +17,26 @@ function mapKids(kid) {
 export default class App extends Component {
   render() {
     const {
-      kids
-    } = this.props;
-    const kidsComponents = kids.map(mapKids);
+      kids,
+      user,
+      onLogin, 
+      addKid
+    } = this.props.appState;
+    
+    if (!user) {
+      return (
+        <Login onLogin={onLogin} />
+      );
+    } 
+
+    if (!kids) {
+      return (
+        <AddKids addKid={addKid} />
+      );
+    }
     
     return (
-      <div>
-        { kidsComponents }
-      </div>
+      <KidsEvaluation kids={kids} />
     );
   }
 }
