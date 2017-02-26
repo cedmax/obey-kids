@@ -4,20 +4,14 @@ import style from 'styles/evaluation.scss';
 
 const stars = ['normal', 'better', 'boom'];
 
-function onClick(props, isSelected) {
-  return () => {
-    isSelected ? props.removeStar() : props.addStar();
-  };
-}
-
-function mapStars(props) {
+function mapStars(starCount, add, remove) {
   return (star, i) => {
-    const isSelected = (i < props.stars);
-    const isActive = (i === props.stars || i === props.stars - 1);
+    const isSelected = (i < starCount);
+    const isActive = (i === starCount || i === starCount - 1);
     
     return (
       <Star 
-        onClick={ isActive && onClick(props, isSelected)}
+        onClick={ isActive && isSelected ? remove : add }
         key={ star } 
         type={ star } 
         selected={ isSelected }
@@ -27,7 +21,7 @@ function mapStars(props) {
 }
 
 export default function Evaluation(props) {
-  const starsComponents = stars.map(mapStars(props));
+  const starsComponents = stars.map(mapStars(props.stars, props.addStar, props.removeStar));
 
   return (
     <div className={ style.block }>
