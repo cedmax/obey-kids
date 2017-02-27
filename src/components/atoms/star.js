@@ -48,10 +48,7 @@ export default class Star extends Component {
     const star = stars[type];
     const className = cx(style.star, {
       [style.active]: active,
-      [style.selected]: selected
-    });
-
-    const svgClassName= cx({
+      [style.selected]: selected,
       'animated': !!this.state.direction,
       'headShake': (this.state.direction === 'down'),
       'tada': (this.state.direction === 'up')
@@ -63,7 +60,7 @@ export default class Star extends Component {
     }
     return (
       <div className={ className }>
-        <SVGInline className={svgClassName} onClick={ onClick } svg={ star } /> 
+        <SVGInline onClick={ onClick } svg={ star } /> 
         {soundElm}
       </div>
     );
