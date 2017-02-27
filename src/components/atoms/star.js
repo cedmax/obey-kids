@@ -54,7 +54,7 @@ export default class Star extends Component {
     const svgClassName= cx({
       'animated': !!this.state.direction,
       'headShake': (this.state.direction === 'down'),
-      'tada': (this.state.direction === 'up'),
+      'tada': (this.state.direction === 'up')
     });
 
     let soundElm;

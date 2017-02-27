@@ -54,7 +54,7 @@ export default class AddKid extends Component {
     };
   }
 
-  onSubmit(e) {
+  onSubmit() {
     const names = this.state.names;
     names.forEach(this.props.addKid);
   }
