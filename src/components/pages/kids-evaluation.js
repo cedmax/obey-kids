@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 import Kid from 'components/organisms/kid';
 
 function mapKids(kid) {
@@ -10,12 +10,13 @@ function mapKids(kid) {
   );
 }
 
+@inject('store')
 @observer
 export default class KidsEvaluation extends Component {
   render() {
     const {
       kids
-    } = this.props;
+    } = this.props.store;
 
     const kidsComponents = kids.map(mapKids);
     return (
@@ -25,7 +26,9 @@ export default class KidsEvaluation extends Component {
 }
 
 KidsEvaluation.propTypes = {
-  kids: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired
-  })).isRequired
+  store: PropTypes.shape({
+    kids: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired
+    })).isRequired
+  })
 };

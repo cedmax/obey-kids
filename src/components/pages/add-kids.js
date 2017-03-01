@@ -2,7 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import Input from 'components/atoms/input';
 import Button from 'components/atoms/button';
 import style from 'styles/kid.scss';
+import { observer, inject } from 'mobx-react';
+import { browserHistory } from 'react-router';
 
+@inject('store')
+@observer
 export default class AddKid extends Component {
   constructor(props) {
     super(props);
@@ -56,10 +60,13 @@ export default class AddKid extends Component {
 
   onSubmit() {
     const names = this.state.names;
-    names.forEach(this.props.addKid);
+    names.forEach((name) => this.props.store.addKid(name, 3));
+    browserHistory.push('/kids');
   }
 }
 
 AddKid.propTypes = {
-  addKid: PropTypes.func.isRequired
+  store: PropTypes.shape({
+    addKid: PropTypes.func.isRequired
+  })
 };
