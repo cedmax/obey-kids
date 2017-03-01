@@ -8,8 +8,7 @@ function mapStars(starCount, add, remove) {
   return (star, i) => {
     const isSelected = (i < starCount);
     const isActive = (i === starCount || i === starCount - 1);
-    const onClick = isSelected ? remove : add
-
+    const onClick = isSelected ? remove : add;
 
     return (
       <Star 

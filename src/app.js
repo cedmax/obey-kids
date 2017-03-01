@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { Router, IndexRoute, Route, browserHistory } from 'react-router'
+import React, { Component, PropTypes } from 'react';
+import { observer, inject, PropTypes as MobXPropTypes } from 'mobx-react';
+import { Router, IndexRoute, Route, browserHistory } from 'react-router';
 import Login from 'components/pages/login';
 import AddKids from 'components/pages/add-kids';
 import KidsEvaluation from 'components/pages/kids-evaluation';
-import { observer, inject } from 'mobx-react';
 
 @inject('store')
 @observer
@@ -54,3 +54,10 @@ export default class App extends Component {
     }
   }
 }
+
+App.propTypes = {
+  store: PropTypes.shape({
+    kids: MobXPropTypes.observableArrayOf(PropTypes.object),
+    user: MobXPropTypes.observableObject
+  })
+};

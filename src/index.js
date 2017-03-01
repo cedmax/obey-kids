@@ -1,9 +1,9 @@
 import React from 'react';
-import { render } from 'react-dom';
 import { Provider } from 'mobx-react';
 import { AppContainer } from 'react-hot-loader';
-import store from 'store';
+import { render } from 'react-dom';
 import App from 'app';
+import store from 'store';
 
 render(
   <AppContainer>

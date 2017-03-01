@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import SVGInline from 'react-svg-inline';
-import cx from 'classnames';
+import Beep from 'components/atoms/beep';
 import normal from 'svg/normal-star.svg';
 import better from 'svg/better-star.svg';
 import boom from 'svg/boom-star.svg';
+import cx from 'classnames';
 import style from 'styles/star.scss';
-import Beep from 'components/atoms/beep';
 
 const stars = {
   normal,
@@ -37,7 +37,7 @@ export default class Star extends Component {
     }
   }
 
-  render () {
+  render() {
     const {
       selected,
       active,

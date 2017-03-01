@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
+import { observer, inject } from 'mobx-react';
+import { browserHistory } from 'react-router';
 import Input from 'components/atoms/input';
 import Button from 'components/atoms/button';
 import style from 'styles/kid.scss';
-import { observer, inject } from 'mobx-react';
-import { browserHistory } from 'react-router';
 
 @inject('store')
 @observer

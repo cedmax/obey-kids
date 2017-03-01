@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { observer, inject } from 'mobx-react';
+import { browserHistory } from 'react-router';
 import FacebookLogin from 'react-facebook-login';
 import style from 'styles/login.scss';
-import {browserHistory} from 'react-router'
+
 @inject('store')
 @observer
 export default class Login extends Component {
