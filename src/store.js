@@ -33,7 +33,9 @@ class Store {
   }
 
   addKid(name, stars) {
-    this.kids.push(new Kid(name, stars));
+    if (name) {
+      this.kids.push(new Kid(name, stars));
+    }
   }
 }
 
