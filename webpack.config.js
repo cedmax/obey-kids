@@ -4,29 +4,35 @@ const combineLoaders = require('webpack-combine-loaders');
 
 const port = 3000;
 const host = 'localhost';
+const devtool = (process.env.NODE_ENV === 'production')?'source-map':'eval';
+const plugins = [
+  new webpack.optimize.UglifyJsPlugin()
+];
+const entry = ['./src/index'];
+if (process.env.NODE_ENV !== 'production') {
+  entry.unshift('webpack/hot/only-dev-server');
+  entry.unshift(`webpack-dev-server/client?http://${host}:${port}`);
+  entry.unshift('react-hot-loader/patch');
+  plugins.splice(0, 1, new webpack.HotModuleReplacementPlugin());
+}
 
 module.exports = {
   port,
   host,
-  devtool: 'eval',
-  entry: [
-    'react-hot-loader/patch',
-    `webpack-dev-server/client?http://${host}:${port}`,
-    'webpack/hot/only-dev-server',
-    './src/index'
-  ],
+  entry,
+  plugins,
+  devtool,
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: '/dist/'
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ],
   resolve: {
     modulesDirectories: ['node_modules','src', 'assets'],
     extensions: ['', '.js', '.jsx'],
-    alias: { soundmanager2: 'soundmanager2/script/soundmanager2-nodebug-jsmin.js' }
+    alias: { 
+      'soundmanager2': 'soundmanager2/script/soundmanager2-nodebug-jsmin.js'
+    }
   },
   module: {
     loaders: [{
