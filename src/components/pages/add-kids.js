@@ -1,12 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import { observer, inject } from 'mobx-react';
 import { browserHistory } from 'react-router';
+import autobind from 'autobind-decorator';
 import Input from 'components/atoms/input';
 import Button from 'components/atoms/button';
 import style from 'styles/kid.scss';
 
 @inject('store')
 @observer
+@autobind
 export default class AddKid extends Component {
   constructor(props) {
     super(props);
@@ -14,9 +16,6 @@ export default class AddKid extends Component {
     this.state = {
       names: ['']
     };
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.moreKids = this.moreKids.bind(this);
   }
 
   render() {

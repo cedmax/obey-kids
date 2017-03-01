@@ -1,21 +1,14 @@
 import React, { Component, PropTypes } from 'react';
-import { observer, inject, PropTypes as MobXPropTypes } from 'mobx-react';
+import { inject, PropTypes as MobXPropTypes } from 'mobx-react';
 import { Router, IndexRoute, Route, browserHistory } from 'react-router';
+import autobind from 'autobind-decorator';
 import Login from 'components/pages/login';
 import AddKids from 'components/pages/add-kids';
 import KidsEvaluation from 'components/pages/kids-evaluation';
 
 @inject('store')
-@observer
+@autobind
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.validateIndex = this.validateIndex.bind(this);
-    this.validateAddKids = this.validateAddKids.bind(this);
-    this.validateKids = this.validateKids.bind(this);
-  }
-
   render() {
     return (
       <Router history={browserHistory}>

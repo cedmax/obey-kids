@@ -1,20 +1,18 @@
-import { observable } from 'mobx';
+import { observable, action } from 'mobx';
 
 class Kid {
-  @observable stars = 0;
-
   constructor(name, stars) {
     this.name = name;
     this.stars = stars;
-    this.addStar = this.addStar.bind(this);
-    this.removeStar = this.removeStar.bind(this);
   }
+  
+  @observable stars = 0;
 
-  addStar() {
+  @action.bound addStar() {
     this.stars++;
   }
 
-  removeStar() {
+  @action.bound removeStar() {
     this.stars--;
   }
 }
@@ -22,17 +20,12 @@ class Kid {
 class Store {
   @observable user = null;
   @observable kids = [];
-  
-  constructor() {
-    this.onLogin = this.onLogin.bind(this);
-    this.addKid = this.addKid.bind(this);
-  }
 
-  onLogin(user) {
+  @action.bound onLogin(user) {
     this.user = user;
   }
 
-  addKid(name, stars) {
+  @action.bound addKid(name, stars) {
     if (name) {
       this.kids.push(new Kid(name, stars));
     }
