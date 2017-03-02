@@ -4,7 +4,22 @@
   "scripts": {
     "start": "node server.js",
     "lint": "eslint src",
-    "bundle": "NODE_ENV=\"production\" webpack -p --config webpack.config.js"
+    "bundle": "NODE_ENV=\"production\" webpack -p --config webpack.config.js",
+    "test": "jest",
+    "test-watch": "jest --watch",
+    "test-coverage": "jest --coverage"
+  },
+  "jest": {
+    "setupFiles": [
+      "./jest.js"
+    ],
+    "moduleDirectories": ["node_modules", "src", "assets"],
+    "moduleNameMapper": {
+      "^.+\\.(css|scss)$": "identity-obj-proxy"
+    },
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/enzyme-to-json/serializer"
+    ]
   },
   "repository": {
     "type": "git",
@@ -15,16 +30,22 @@
     "autoprefixer-loader": "^3.2.0",
     "babel-core": "^6.9.1",
     "babel-eslint": "^6.1.0",
+    "babel-jest": "^19.0.0",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-1": "^6.5.0",
     "css-loader": "^0.26.2",
+    "enzyme": "^2.7.1",
+    "enzyme-to-json": "^1.5.0",
     "eslint": "^2.13.1",
     "eslint-plugin-react": "^5.1.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^19.0.2",
     "node-sass": "^4.5.0",
     "raw-loader": "^0.5.1",
+    "react-addons-test-utils": "^15.4.2",
     "react-hot-loader": "^3.0.0-beta.2",
     "sass-loader": "^6.0.2",
     "style-loader": "^0.13.2",
