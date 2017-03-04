@@ -1,19 +1,15 @@
 import { observable, action } from 'mobx';
 
 class Kid {
+  @observable stars = 0;
+  
   constructor(name, stars) {
     this.name = name;
     this.stars = stars;
   }
-  
-  @observable stars = 0;
 
-  @action.bound addStar() {
-    this.stars++;
-  }
-
-  @action.bound removeStar() {
-    this.stars--;
+  @action.bound setStar(stars) {
+    this.stars = stars;
   }
 }
 
@@ -21,7 +17,7 @@ class Store {
   @observable user = null;
   @observable kids = [];
 
-  @action.bound onLogin(user) {
+  @action.bound setUser(user) {
     this.user = user;
   }
 

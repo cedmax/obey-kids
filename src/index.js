@@ -3,7 +3,12 @@ import { Provider } from 'mobx-react';
 import { AppContainer } from 'react-hot-loader';
 import { render } from 'react-dom';
 import App from 'app';
-import store from 'store';
+import store from 'store/mobx';
+import Promise from 'promise-polyfill'; 
+
+if (!window.Promise) {
+  window.Promise = Promise;
+}
 
 render(
   <AppContainer>
