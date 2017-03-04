@@ -1,14 +1,17 @@
 import React, { PropTypes } from 'react';
 import Star from 'components/atoms/star';
 import style from 'styles/evaluation.scss';
+import { addStar, removeStar } from 'store/actions';
 
 const stars = ['normal', 'better', 'boom'];
 
-function mapStars(starCount, add, remove) {
+
+
+function mapStars(name, starCount) {
   return (star, i) => {
     const isSelected = (i < starCount);
     const isActive = (i === starCount || i === starCount - 1);
-    const onClick = isSelected ? remove : add;
+    const onClick = isSelected ? removeStar(name) : addStar(name);
 
     return (
       <Star 
@@ -22,7 +25,7 @@ function mapStars(starCount, add, remove) {
 }
 
 export default function Evaluation(props) {
-  const starsComponents = stars.map(mapStars(props.stars, props.addStar, props.removeStar));
+  const starsComponents = stars.map(mapStars(props.name, props.stars));
 
   return (
     <div className={ style.block }>
@@ -32,7 +35,6 @@ export default function Evaluation(props) {
 }
 
 Evaluation.propTypes = {
-  stars: PropTypes.number.isRequired,
-  addStar: PropTypes.func.isRequired,
-  removeStar: PropTypes.func.isRequired
+  name: PropTypes.string.isRequired,
+  stars: PropTypes.number.isRequired
 };

@@ -13,10 +13,8 @@ export default function Kid(props) {
         { kid.name } ({ kid.stars })
       </h1>
       <Evaluation 
-        stars={ kid.stars }
-        addStar={ kid.addStar }
-        removeStar={ kid.removeStar }
-        />
+        name={ kid.name }
+        stars={ kid.stars } />
     </div>
   );
 }
