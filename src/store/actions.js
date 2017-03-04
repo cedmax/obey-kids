@@ -19,8 +19,8 @@ function checkIfUserExists(userId) {
   });
 }
 
-function updateChildStars(userId, kidName, value) {
-  return database.ref(`${userId}/${kidName}/${currentDay}`).set(value || 3);
+function updateChildStars(userId, kidName, value: 3) {
+  return database.ref(`${userId}/${kidName}/${currentDay}`).set(value);
 }
 
 function checkIfChildresHasToday(kidsSnapshot) {
