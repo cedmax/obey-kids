@@ -7,3 +7,6 @@ The core concept is that they have 3 stars every day, which they can lose misbeh
 It was also an opportunity to get to work with css modules, mobx, firebase and stuff.
 
 Still missing charts, editable history, goals definitions and notifications, more emojis and animations. But collecting data it's a start.
+
+
+<img src="https://raw.githubusercontent.com/cedmax/obey-kids/master/assets/screenshot.png" width="400" />
