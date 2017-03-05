@@ -1,5 +1,12 @@
 import React, { PropTypes } from 'react';
 import style from 'styles/template.scss';
+import windowOpen from 'helpers/safe-open-in-new-window';
+
+function onClick(e) {
+  e.preventDefault();
+  const elm = e.currentTarget;
+  windowOpen(elm.href);
+}
 
 export default function Template(props) {  
   return (
@@ -11,10 +18,10 @@ export default function Template(props) {
       <div className={ style.main }>{ props.children }</div>
       <footer className={ style.footer }>
         Star Wars is a Disney intellectual property.<br/>
-        Star Wars icons by <a href="https://dribbble.com/shots/2383021-Star-Wars-Icons-Freebie">Justas Galaburda</a>,
-        font by <a href="http://www.dafont.com/shyfonts.d11">Shyfonts</a>,
-        <br/> stars by <a href="http://getemoji.com/">GetEmoji</a> & 
-        made with <span className={style.heart}>♥</span> by <a href="https://cedmax.com/">cedmax</a>.
+        Star Wars icons by <a onClick={onClick} href="https://dribbble.com/shots/2383021-Star-Wars-Icons-Freebie">Justas Galaburda</a>,
+        font by <a onClick={onClick} href="http://www.dafont.com/shyfonts.d11">Shyfonts</a>,
+        <br/> stars by <a onClick={onClick} href="http://getemoji.com/">GetEmoji</a> & 
+        made with <span className={style.heart}>♥</span> by <a onClick={onClick} href="https://cedmax.com/">cedmax</a>.
       </footer>
     </div>
   );
