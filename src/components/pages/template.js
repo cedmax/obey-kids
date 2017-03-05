@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import style from 'styles/template.scss';
 
 export default function Template(props) {  
@@ -17,3 +17,7 @@ export default function Template(props) {
     </div>
   );
 }
+
+Template.propTypes = {
+  children: PropTypes.node.isRequired
+};

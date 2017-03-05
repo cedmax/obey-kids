@@ -18,7 +18,7 @@ if (process.env.NODE_ENV !== 'production') {
   entry.unshift('webpack/hot/only-dev-server');
   entry.unshift(`webpack-dev-server/client?http://${host}:${port}`);
   entry.unshift('react-hot-loader/patch');
-  plugins.push(new webpack.HotModuleReplacementPlugin());
+  plugins.splice(0, 2, new webpack.HotModuleReplacementPlugin());
 }
 
 module.exports = {

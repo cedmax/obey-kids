@@ -62,7 +62,7 @@ firebase.auth().onAuthStateChanged((user) => {
 export function login() {
   const provider = new firebase.auth.FacebookAuthProvider();
   firebase.auth().signInWithPopup(provider);
-};
+}
 
 export function addKid(kidName) {
   updateChildStars(store.user, kidName).then(() => {
