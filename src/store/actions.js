@@ -5,6 +5,7 @@ import moment from 'moment';
 
 const database = firebase.database();
 const currentDay = moment().format('YYYYMMDD');
+const defaultStars = 3;
 
 function checkIfUserExists(userId) {
   return new Promise((resolve, reject)=>{
@@ -19,7 +20,7 @@ function checkIfUserExists(userId) {
   });
 }
 
-function updateChildStars(userId, kidName, value: 3) {
+function updateChildStars(userId, kidName, value = defaultStars) {
   return database.ref(`${userId}/${kidName}/${currentDay}`).set(value);
 }
 
@@ -28,8 +29,10 @@ function checkIfChildresHasToday(kidsSnapshot) {
     kidsSnapshot.forEach((kidSnapshot) => {
       const kidName = kidSnapshot.key;
       const childData = kidSnapshot.child(currentDay);
+      
+      store.addKid(kidName, childData.val() || defaultStars);
+      
       if (childData.val()) {
-        store.addKid(kidName, childData.val());
         resolve();
       } else {
         const userId = kidsSnapshot.ref.key;
