@@ -1347,6 +1347,10 @@ convert-source-map@^1.1.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-1.4.0.tgz#e3dad195bf61bfe13a7a3c73e9876ec14a0268f3"
 
+convert-string@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/convert-string/-/convert-string-0.1.0.tgz#79ce41a9bb0d03bcf72cdc6a8f3c56fbbc64410a"
+
 cookie-signature@1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/cookie-signature/-/cookie-signature-1.0.6.tgz#e303a882b342cc3ee8ca513a79999734dab3ae2c"
@@ -1597,6 +1601,24 @@ detect-indent@^4.0.0:
 diff@^3.0.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/diff/-/diff-3.2.0.tgz#c9ce393a4b7cbd0b058a725c93df299027868ff9"
+
+digit-sum@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/digit-sum/-/digit-sum-1.0.0.tgz#cdcf1990a0eebe92193aea91c2af1552d07140a1"
+  dependencies:
+    is-positive "^3.0.0"
+    math-sum "^1.0.0"
+    num-arr "^1.0.1"
+    number-is-integer "^1.0.0"
+
+digital-root@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/digital-root/-/digital-root-1.0.4.tgz#aabf89fcc8943f544ab1844c74a24bfd19f23120"
+  dependencies:
+    digit-sum "^1.0.0"
+    is-positive "^3.0.0"
+    number-is-integer "^1.0.0"
+    number-length "^1.0.0"
 
 doctrine@^1.2.2:
   version "1.5.0"
@@ -2636,7 +2658,7 @@ is-extglob@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/is-extglob/-/is-extglob-2.1.1.tgz#a88c02535791f02ed37c76a1b9ea9773c833f8c2"
 
-is-finite@^1.0.0:
+is-finite@^1.0.0, is-finite@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/is-finite/-/is-finite-1.0.2.tgz#cc6677695602be550ef11e8b4aa6305342b6d0aa"
   dependencies:
@@ -2704,6 +2726,10 @@ is-plain-object@^2.0.1:
   resolved "https://registry.yarnpkg.com/is-plain-object/-/is-plain-object-2.0.1.tgz#4d7ca539bc9db9b737b8acb612f2318ef92f294f"
   dependencies:
     isobject "^1.0.0"
+
+is-positive@^3.0.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/is-positive/-/is-positive-3.1.0.tgz#857db584a1ba5d1cb2980527fc3b6c435d37b0fd"
 
 is-posix-bracket@^0.1.0:
   version "0.1.1"
@@ -3419,6 +3445,10 @@ math-expression-evaluator@^1.2.14:
   version "1.2.16"
   resolved "https://registry.yarnpkg.com/math-expression-evaluator/-/math-expression-evaluator-1.2.16.tgz#b357fa1ca9faefb8e48d10c14ef2bcb2d9f0a7c9"
 
+math-sum@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/math-sum/-/math-sum-1.0.0.tgz#681c4d2796748a26cd7ca767a50d52f80bb8bef0"
+
 media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
@@ -3731,13 +3761,29 @@ nth-check@~1.0.1:
   dependencies:
     boolbase "~1.0.0"
 
+num-arr@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/num-arr/-/num-arr-1.0.1.tgz#0cace7c06ee2a35f4679caa6d7c7b5a7a4c0bca0"
+  dependencies:
+    number-is-integer "^1.0.0"
+
 num2fraction@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
 
+number-is-integer@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/number-is-integer/-/number-is-integer-1.0.1.tgz#e59bca172ffed27318e79c7ceb6cb72c095b2152"
+  dependencies:
+    is-finite "^1.0.1"
+
 number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
+
+number-length@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/number-length/-/number-length-1.0.0.tgz#6440b5e069e2334810e2074e2b8c771a70129f5a"
 
 "nwmatcher@>= 1.3.9 < 2.0.0":
   version "1.3.9"

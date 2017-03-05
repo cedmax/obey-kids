@@ -1,22 +1,29 @@
-.block {
-  width: 30%;
-  max-width: 500px;
-  margin: 0 auto;
+.block { 
+  margin: 0 3%;
 }
 
 .title {        
-  filter: drop-shadow(3px 3px 3px black);
   display: inline-block;
-  color: white;
   padding: 0 5px;
-  font-family: Georgia;
-  font-size: 20px;
-  transform: translate3d(5%, 100%, 0);
+  font-family: distant-galaxy, system-ui;
+  text-transform: lowercase;
+  font-size: calc( 1rem + 16 * (100vw - 320px) / (960 - 320));
+
+  span {
+    font-size: 50%;
+    vertical-align: text-top;
+  }
+}
+
+.icon {
+  width: 46px;
+  margin-left: -15px;
+  vertical-align: middle;
 }
 
 .add {
-  text-decoration: underline;
   color: white;
+  text-decoration: underline;
   padding-left: 10px;
   cursor: pointer;
   border: none;

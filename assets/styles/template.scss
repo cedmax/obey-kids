@@ -1,0 +1,46 @@
+.block {
+  width: 500px;
+  max-width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.header {
+  display: inline-block;
+  text-align: center;
+  padding-top: 30px;
+  h1 {
+    font-family: distant-galaxy;
+    font-size: calc( 3rem + 16 * (100vw - 320px) / (960 - 320) );
+  }
+  h2 {
+    font-size: 80%;
+    text-align: right;
+  }
+}
+
+.main {
+  text-align: left;
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-47%, -45%, 0);
+  max-width: 500px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+  color: #FFE81F;
+  width: 100%;
+  text-align: right;
+  font-size: 70%;
+  right: 0;
+
+  a {
+    color: white;
+  }
+}
+

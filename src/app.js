@@ -5,6 +5,7 @@ import autobind from 'autobind-decorator';
 import Login from 'components/pages/login';
 import AddKids from 'components/pages/add-kids';
 import KidsEvaluation from 'components/pages/kids-evaluation';
+import Template from 'components/pages/template';
 
 @inject('store')
 @autobind
@@ -12,7 +13,7 @@ export default class App extends Component {
   render() {
     return (
       <Router history={browserHistory}>
-        <Route path="/">
+        <Route path="/" component={Template}>
           <Route path="kids" component={KidsEvaluation} onEnter={this.validateKids} />
           <Route path="add-kids" component={AddKids} onEnter={this.validateAddKids} />
           <IndexRoute component={Login} onEnter={this.validateIndex}/>
