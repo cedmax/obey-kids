@@ -20,7 +20,10 @@ function checkIfUserExists(userId) {
   });
 }
 
-function updateChildStars(userId, kidName, value = defaultStars) {
+function updateChildStars(userId, kidName, value) {
+  if (typeof value === 'undefined') {
+    value = defaultStars;
+  }
   return database.ref(`${userId}/${kidName}/${currentDay}`).set(value);
 }
 
@@ -30,11 +33,12 @@ function checkIfChildresHasToday(kidsSnapshot) {
       const kidName = kidSnapshot.key;
       const childData = kidSnapshot.child(currentDay);
       
-      store.addKid(kidName, childData.val() || defaultStars);
       
-      if (childData.val()) {
+      if (childData.val() || childData.val() === 0) {
+        store.addKid(kidName, childData.val());
         resolve();
       } else {
+        store.addKid(kidName, defaultStars);
         const userId = kidsSnapshot.ref.key;
         updateChildStars(userId, kidName).then(resolve);
       }
