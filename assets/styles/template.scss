@@ -28,19 +28,16 @@
   }
 }
 
-
 .main {
   text-align: left;
-  position: absolute;
   width: 100%;
-  left: 50%;
-  top: 50%;
-  transform: translate3d(-47%, -45%, 0);
+  margin-top: 75px;
+  padding-bottom: 50px;
   max-width: 500px;
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   padding: 10px;
   color: #FFE81F;
