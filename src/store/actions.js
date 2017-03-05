@@ -30,11 +30,11 @@ function checkIfChildresHasToday(kidsSnapshot) {
       const childData = kidSnapshot.child(currentDay);
       if (childData.val()) {
         store.addKid(kidName, childData.val());
+        resolve();
       } else {
         const userId = kidsSnapshot.ref.key;
-        updateChildStars(userId, kidName);
+        updateChildStars(userId, kidName).then(resolve);
       }
-      resolve();
     });
   });
 }
