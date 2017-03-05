@@ -21,7 +21,7 @@ export default function Template(props) {
         Star Wars icons by <a onClick={onClick} href="https://dribbble.com/shots/2383021-Star-Wars-Icons-Freebie">Justas Galaburda</a>,
         font by <a onClick={onClick} href="http://www.dafont.com/shyfonts.d11">Shyfonts</a>,
         <br/> stars by <a onClick={onClick} href="http://getemoji.com/">GetEmoji</a> & 
-        made with <span className={style.heart}>♥</span> by <a onClick={onClick} href="https://cedmax.com/">cedmax</a>.
+        made with <span className={style.heart} dangerouslySetInnerHTML={{__html: '&hearts;' }}></span> by <a onClick={onClick} href="https://cedmax.com/">cedmax</a>.
       </footer>
     </div>
   );
