@@ -5,10 +5,11 @@ import style from 'styles/kid.scss';
 
 export default function Kid(props) {
   const {
-    kid
+    name,
+    stars
   } = props;
 
-  const iconSrc = stringToDigit(kid.name);
+  const iconSrc = stringToDigit(name);
 
   return (
     <div className={ style.body }>
@@ -17,18 +18,16 @@ export default function Kid(props) {
           className={ style.icon } 
           src={ `assets/svg/icons/${iconSrc}.svg` } /> 
           
-          { kid.name } <span>({ kid.stars })</span>
+          { name } <span>({ stars })</span>
       </h1>
       <Evaluation 
-        name={ kid.name }
-        stars={ kid.stars } />
+        name={ name }
+        stars={ stars } />
     </div>
   );
 }
 
 Kid.propTypes = {
-  kid: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    stars: PropTypes.number.isRequired
-  })
+  name: PropTypes.string.isRequired,
+  stars: PropTypes.number.isRequired
 };

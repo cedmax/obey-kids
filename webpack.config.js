@@ -6,6 +6,11 @@ const port = 3000;
 const host = 'localhost';
 const devtool = (process.env.NODE_ENV === 'production')?'source-map':'eval';
 const plugins = [
+  new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: JSON.stringify('production')
+    }
+  }),
   new webpack.optimize.UglifyJsPlugin()
 ];
 const entry = ['./src/index'];
@@ -13,7 +18,7 @@ if (process.env.NODE_ENV !== 'production') {
   entry.unshift('webpack/hot/only-dev-server');
   entry.unshift(`webpack-dev-server/client?http://${host}:${port}`);
   entry.unshift('react-hot-loader/patch');
-  plugins.splice(0, 1, new webpack.HotModuleReplacementPlugin());
+  plugins.push(new webpack.HotModuleReplacementPlugin());
 }
 
 module.exports = {

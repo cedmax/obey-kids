@@ -2,11 +2,12 @@ import React, { Component, PropTypes } from 'react';
 import { observer, inject } from 'mobx-react';
 import Kid from 'components/organisms/kid';
 
-function mapKids(kid) {
-  return (
+function mapKids(stars) {
+  return (kid) => (
     <Kid 
       key={ kid.name }
-      kid={ kid } />
+      stars={ stars[kid.name] }
+      name={ kid.name } />
   );
 }
 
@@ -15,10 +16,11 @@ function mapKids(kid) {
 export default class KidsEvaluation extends Component {
   render() {
     const {
-      kids
+      kids,
+      stars
     } = this.props.store;
 
-    const kidsComponents = kids.map(mapKids);
+    const kidsComponents = kids.map(mapKids(stars));
     return (
       <div>{kidsComponents}</div>
     );
@@ -29,6 +31,7 @@ KidsEvaluation.propTypes = {
   store: PropTypes.shape({
     kids: PropTypes.arrayOf(PropTypes.shape({
       name: PropTypes.string.isRequired
-    })).isRequired
+    })).isRequired,
+    stars: PropTypes.arrayOf(PropTypes.objects)
   })
 };

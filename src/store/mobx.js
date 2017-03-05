@@ -1,4 +1,4 @@
-import { observable, action } from 'mobx';
+import { observable, action, computed } from 'mobx';
 
 class Kid {
   @observable stars = 0;
@@ -16,7 +16,13 @@ class Kid {
 class Store {
   @observable user = null;
   @observable kids = [];
-
+  @computed get stars() {
+    const ret = {};
+    this.kids.forEach((kid) => {
+      ret[kid.name] = kid.stars;
+    });
+    return ret;
+  }
   @action.bound setUser(user) {
     this.user = user;
   }
