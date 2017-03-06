@@ -18,7 +18,7 @@ export default function Kid(props) {
           className={ style.icon } 
           src={ `assets/svg/icons/${iconSrc}.svg` } /> 
           
-          { name } <span>({ stars })</span>
+          { name }<span> ({ stars })</span>
       </h1>
       <Evaluation 
         name={ name }
