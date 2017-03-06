@@ -2,25 +2,20 @@ import React, { Component, PropTypes } from 'react';
 import { observer, inject } from 'mobx-react';
 import Kid from 'components/organisms/kid';
 
-function mapKids(stars) {
-  return (kid) => (
-    <Kid 
-      key={ kid.name }
-      stars={ stars[kid.name] }
-      name={ kid.name } />
-  );
-}
-
 @inject('store')
 @observer
 export default class KidsEvaluation extends Component {
   render() {
     const {
-      kids,
-      stars
+      kids
     } = this.props.store;
-
-    const kidsComponents = kids.map(mapKids(stars));
+    
+    const kidsComponents = Object.keys(kids).map((kidName) => (
+      <Kid 
+        key={ kidName }
+        stars={ kids[kidName] }
+        name={ kidName } />
+    ));
     return (
       <div>{kidsComponents}</div>
     );

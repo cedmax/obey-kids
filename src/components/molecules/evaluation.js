@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import Star from 'components/atoms/star';
-import style from 'styles/evaluation.scss';
+import style from 'styles/kid.scss';
 import { addStar, removeStar } from 'store/actions';
 
 const stars = ['normal', 'better', 'boom'];
@@ -28,7 +28,7 @@ export default function Evaluation(props) {
   const starsComponents = stars.map(mapStars(props.name, props.stars));
 
   return (
-    <div className={ style.block }>
+    <div className={ style.wrapper }>
       {starsComponents}
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import SVGInline from 'react-svg-inline';
+import { observer } from 'mobx-react';
 import Beep from 'components/atoms/beep';
 import normal from 'svg/normal-star.svg';
 import better from 'svg/better-star.svg';
@@ -13,6 +14,7 @@ const stars = {
   boom
 };
 
+@observer
 export default class Star extends Component {
   constructor(props) {
     super(props);

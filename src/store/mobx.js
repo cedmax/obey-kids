@@ -1,36 +1,17 @@
-import { observable, action, computed } from 'mobx';
-
-class Kid {
-  @observable stars = 0;
-  
-  constructor(name, stars) {
-    this.name = name;
-    this.stars = stars;
-  }
-
-  @action.bound setStar(stars) {
-    this.stars = stars;
-  }
-}
+import { observable, action, extendObservable } from 'mobx';
 
 class Store {
   @observable user = null;
-  @observable kids = [];
-  @computed get stars() {
-    const ret = {};
-    this.kids.forEach((kid) => {
-      ret[kid.name] = kid.stars;
-    });
-    return ret;
-  }
+  @observable kids = {};
+
   @action.bound setUser(user) {
     this.user = user;
   }
 
-  @action.bound addKid(name, stars) {
-    if (name) {
-      this.kids.push(new Kid(name, stars));
-    }
+  @action.bound setKid(name, stars) {
+    name && extendObservable(this.kids, {
+      [name]: stars
+    });
   }
 }
 

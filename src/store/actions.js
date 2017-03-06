@@ -35,10 +35,10 @@ function checkIfChildresHasToday(kidsSnapshot) {
       
       
       if (childData.val() || childData.val() === 0) {
-        store.addKid(kidName, childData.val());
+        store.setKid(kidName, childData.val());
         resolve();
       } else {
-        store.addKid(kidName, defaultStars);
+        store.setKid(kidName, defaultStars);
         const userId = kidsSnapshot.ref.key;
         updateChildStars(userId, kidName).then(resolve);
       }
@@ -64,9 +64,9 @@ export function login() {
   firebase.auth().signInWithPopup(provider);
 }
 
-export function addKid(kidName) {
+export function setKid(kidName) {
   updateChildStars(store.user, kidName).then(() => {
-    store.addKid(kidName, 3);
+    store.setKid(kidName, 3);
     browserHistory.push('kids');
   });
 }
@@ -87,9 +87,7 @@ function changeStar(kidName, action) {
 
     updateChildStars(store.user, kidName, normaliseStars(newValue));
     
-    store.kids.find((kid) => {
-      return kid.name === kidName;
-    }).setStar(newValue);
+    store.setKid(kidName, newValue);
   });
 }
 

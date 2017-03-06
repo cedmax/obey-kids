@@ -7,6 +7,10 @@ import AddKids from 'components/pages/add-kids';
 import KidsEvaluation from 'components/pages/kids-evaluation';
 import Template from 'components/pages/template';
 
+function getKids(kidsObj) {
+  return Object.keys(kidsObj);
+}
+
 @inject('store')
 @autobind
 export default class App extends Component {
@@ -29,7 +33,8 @@ export default class App extends Component {
   }
 
   validateAddKids(state, replace) {
-    if (this.props.store.kids.length) {
+    const kids = getKids(this.props.store.kids);
+    if (kids.length) {
       replace('/kids');
     }
 
@@ -39,7 +44,8 @@ export default class App extends Component {
   }
 
   validateKids(state, replace) {
-    if (!this.props.store.kids.length) {
+    const kids = getKids(this.props.store.kids);
+    if (!kids.length) {
       replace('/add-kids');
     }
 
@@ -51,7 +57,7 @@ export default class App extends Component {
 
 App.propTypes = {
   store: PropTypes.shape({
-    kids: MobXPropTypes.observableArrayOf(PropTypes.object),
+    kids: MobXPropTypes.observableObject,
     user: MobXPropTypes.observableObject
   })
 };
