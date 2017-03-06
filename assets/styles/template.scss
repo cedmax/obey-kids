@@ -1,3 +1,14 @@
+:global(body) {
+  background: #20222E;
+  color: #FFE81F;
+  font-family: system-ui, Helvetica Neue;
+}
+
+:global(*) {
+  box-sizing: border-box;
+  margin:0;
+}
+
 .block {
   width: 500px;
   max-width: 80%;
@@ -11,7 +22,7 @@
   padding-top: 30px;
   
   h1 {
-    font-family: distant-galaxy;
+    font-family: 'distant-galaxy';
     font-size: calc( 3rem + 16 * (100vw - 320px) / (960 - 320) );
   }
 
