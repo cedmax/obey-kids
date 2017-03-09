@@ -1,12 +1,16 @@
-:global(body) {
-  background: #20222E;
-  color: #FFE81F;
-  font-family: system-ui, Helvetica Neue;
-}
+@import 'assets/styles/style.scss';
 
-:global(*) {
-  box-sizing: border-box;
-  margin:0;
+:global {
+  body {
+    background: #20222E;
+    color: #FFE81F;
+    font-family: system-ui, Helvetica Neue;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin:0;
+  }
 }
 
 .block {
