@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
 import autobind from 'autobind-decorator';
 import Input from 'components/atoms/input';
 import Button from 'components/atoms/button';
@@ -20,9 +19,10 @@ export default class AddKid extends Component {
     return (
       <div className={ style.block }>
         <h1 className={ style.title }>Add Kids</h1>
+
         { this.state.names.map((name, i) => {
           return (
-            <div key={ name }>
+            <div key={ i }>
               <Input onChange={ this.onChange(i) } value={ name } />
               <Button className={ style.add } onClick={ this.moreKids } text="add" />
             </div>
@@ -58,6 +58,5 @@ export default class AddKid extends Component {
   onSubmit() {
     const names = this.state.names;
     names.forEach((name) => addKid(name, 3));
-    browserHistory.push('/kids');
   }
 }
