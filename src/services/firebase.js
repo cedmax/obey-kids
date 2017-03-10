@@ -22,4 +22,5 @@ if (window.location.hostname==='localhost') {
 }
 
 firebase.initializeApp(config[env]);
+export const database = firebase.database();
 export default firebase;

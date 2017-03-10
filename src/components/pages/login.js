@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Button from 'components/atoms/button';
 import style from 'styles/login.scss';
-import { login } from 'store/actions';
+import { login } from 'services/auth';
 
 export default class Login extends Component {
   render() {
