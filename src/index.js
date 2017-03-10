@@ -4,7 +4,7 @@ import { AppContainer } from 'react-hot-loader';
 import { render } from 'react-dom';
 import App from 'app';
 import store from 'store/mobx';
-import Promise from 'promise-polyfill'; 
+import Promise from 'promise-polyfill';
 
 if (!window.Promise) {
   window.Promise = Promise;
@@ -12,7 +12,7 @@ if (!window.Promise) {
 
 render(
   <AppContainer>
-    <Provider store={store}>
+    <Provider store={ store }>
       <App  />
     </Provider>
   </AppContainer>,
@@ -25,7 +25,7 @@ if (module.hot) {
 
     render(
       <AppContainer>
-        <Provider store={store}>
+        <Provider store={ store }>
           <NextApp />
         </Provider>
       </AppContainer>,

@@ -16,11 +16,11 @@ function getKids(kidsObj) {
 export default class App extends Component {
   render() {
     return (
-      <Router history={browserHistory}>
-        <Route path="/" component={Template}>
-          <Route path="kids" component={KidsEvaluation} onEnter={this.validateKids} />
-          <Route path="add-kids" component={AddKids} onEnter={this.validateAddKids} />
-          <IndexRoute component={Login} onEnter={this.validateIndex}/>
+      <Router history={ browserHistory }>
+        <Route path="/" component={ Template }>
+          <Route path="kids" component={ KidsEvaluation } onEnter={ this.validateKids } />
+          <Route path="add-kids" component={ AddKids } onEnter={ this.validateAddKids } />
+          <IndexRoute component={ Login } onEnter={ this.validateIndex }/>
         </Route>
       </Router>
     );

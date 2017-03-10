@@ -18,19 +18,19 @@ export default class AddKid extends Component {
 
   render() {
     return (
-      <div className={style.block}>
-        <h1 className={style.title}>Add Kids</h1>
+      <div className={ style.block }>
+        <h1 className={ style.title }>Add Kids</h1>
         { this.state.names.map((name, i) => {
           return (
-            <div key={i}>
-              <Input onChange={this.onChange(i)} value={name} /> 
-              <Button className={style.add} onClick={this.moreKids} text="add" />
+            <div key={ name }>
+              <Input onChange={ this.onChange(i) } value={ name } />
+              <Button className={ style.add } onClick={ this.moreKids } text="add" />
             </div>
           );
         }) }
-        
-        <div className={style.confirm}>
-          <Button className={style.confirmButton} onClick={this.onSubmit} text="Confirm" />
+
+        <div className={ style.confirm }>
+          <Button className={ style.confirmButton } onClick={ this.onSubmit } text="Confirm" />
         </div>
       </div>
     );
@@ -45,7 +45,7 @@ export default class AddKid extends Component {
   }
 
   onChange(i) {
-    return (e) => { 
+    return (e) => {
       const name = e.target.value;
       const names = this.state.names;
       names[i] = name;

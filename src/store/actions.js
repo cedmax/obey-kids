@@ -8,9 +8,9 @@ const currentDay = moment().format('YYYYMMDD');
 const defaultStars = 3;
 
 function checkIfUserExists(userId) {
-  return new Promise((resolve, reject)=>{
+  return new Promise((resolve, reject) => {
     database.ref(userId).once('value', (snapshot) => {
-      if (snapshot.exists()){
+      if (snapshot.exists()) {
         store.setUser(userId);
         resolve(snapshot);
       } else {
@@ -32,8 +32,7 @@ function checkIfChildresHasToday(kidsSnapshot) {
     kidsSnapshot.forEach((kidSnapshot) => {
       const kidName = kidSnapshot.key;
       const childData = kidSnapshot.child(currentDay);
-      
-      
+
       if (childData.val() || childData.val() === 0) {
         store.setKid(kidName, childData.val());
         resolve();
@@ -50,7 +49,7 @@ firebase.auth().onAuthStateChanged((user) => {
   if (user && !store.user) {
     checkIfUserExists(user.uid)
       .then(checkIfChildresHasToday)
-      .then(()=>{
+      .then(() => {
         browserHistory.push('/kids');
       }).catch((userId) => {
         store.setUser(userId);
@@ -86,7 +85,7 @@ function changeStar(kidName, action) {
     }
 
     updateChildStars(store.user, kidName, normaliseStars(newValue));
-    
+
     store.setKid(kidName, newValue);
   });
 }

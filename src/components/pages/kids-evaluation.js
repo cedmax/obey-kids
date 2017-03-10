@@ -9,12 +9,13 @@ export default class KidsEvaluation extends Component {
     const {
       kids
     } = this.props.store;
-    
+
     const kidsComponents = Object.keys(kids).map((kidName) => (
-      <Kid 
+      <Kid
         key={ kidName }
         stars={ kids[kidName] }
-        name={ kidName } />
+        name={ kidName }
+      />
     ));
     return (
       <div>{kidsComponents}</div>

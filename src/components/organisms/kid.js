@@ -14,15 +14,17 @@ export default function Kid(props) {
   return (
     <div className={ style.body }>
       <h1 className={ style.title }>
-        <img 
-          className={ style.icon } 
-          src={ `assets/svg/icons/${iconSrc}.svg` } /> 
-          
-          { name }<span> ({ stars })</span>
+        <img
+          className={ style.icon }
+          src={ `assets/svg/icons/${iconSrc}.svg` }
+        />
+
+        { name }<span> ({ stars })</span>
       </h1>
-      <Evaluation 
+      <Evaluation
         name={ name }
-        stars={ stars } />
+        stars={ stars }
+      />
     </div>
   );
 }

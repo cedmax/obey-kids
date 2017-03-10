@@ -5,8 +5,6 @@ import { addStar, removeStar } from 'store/actions';
 
 const stars = ['normal', 'better', 'boom'];
 
-
-
 function mapStars(name, starCount) {
   return (star, i) => {
     const isSelected = (i < starCount);
@@ -14,12 +12,13 @@ function mapStars(name, starCount) {
     const onClick = isSelected ? removeStar(name) : addStar(name);
 
     return (
-      <Star 
+      <Star
         onClick={ isActive && onClick }
-        key={ star } 
-        type={ star } 
+        key={ star }
+        type={ star }
         selected={ isSelected }
-        active={ isActive } />
+        active={ isActive }
+      />
     );
   };
 }

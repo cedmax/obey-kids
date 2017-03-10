@@ -6,12 +6,13 @@ import { login } from 'store/actions';
 export default class Login extends Component {
   render() {
     return (
-      <div 
-        className={style.block}>
+      <div
+        className={ style.block }
+      >
         <Button
           text="Login with Facebook"
-          className={style.button}
-          onClick={login}
+          className={ style.button }
+          onClick={ login }
         />
       </div>
     );

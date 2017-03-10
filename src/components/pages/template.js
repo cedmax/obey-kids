@@ -8,7 +8,7 @@ function onClick(e) {
   windowOpen(elm.href);
 }
 
-export default function Template(props) {  
+export default function Template(props) {
   return (
     <div className={ style.block }>
       <header className={ style.header }>
@@ -18,10 +18,10 @@ export default function Template(props) {
       <div className={ style.main }>{ props.children }</div>
       <footer className={ style.footer }>
         Star Wars is a Disney intellectual property.<br/>
-        Star Wars icons by <a onClick={onClick} href="https://dribbble.com/shots/2383021-Star-Wars-Icons-Freebie">Justas Galaburda</a>,
-        font by <a onClick={onClick} href="http://www.dafont.com/shyfonts.d11">Shyfonts</a>,
-        <br/> stars by <a onClick={onClick} href="http://getemoji.com/">GetEmoji</a> & 
-        made with <span className={style.heart} dangerouslySetInnerHTML={{__html: '&hearts;' }}></span> by <a onClick={onClick} href="https://cedmax.com/">cedmax</a>.
+        Star Wars icons by <a onClick={ onClick } href="https://dribbble.com/shots/2383021-Star-Wars-Icons-Freebie">Justas Galaburda</a>,
+        font by <a onClick={ onClick } href="http://www.dafont.com/shyfonts.d11">Shyfonts</a>,
+        <br/> stars by <a onClick={ onClick } href="http://getemoji.com/">GetEmoji</a> &
+        made with <span className={ style.heart } dangerouslySetInnerHTML={{__html: '&hearts;' }} /> by <a onClick={ onClick } href="https://cedmax.com/">cedmax</a>.
       </footer>
     </div>
   );
