@@ -19,7 +19,7 @@ export default class App extends Component {
       <Router history={ browserHistory }>
         <Route path="/" component={ Template }>
           <Route path="kids">
-            <Route path=":date" component={ KidsEvaluation } onEnter={ this.validateKidsAndFetch } />
+            <Route path=":date" component={ KidsEvaluation } onEnter={ this.validateKids } />
             <IndexRoute onEnter={ this.redirectToDate } />
           </Route>
           <Route path="add-kids" component={ AddKids } onEnter={ this.validateAddKids } />
@@ -35,13 +35,12 @@ export default class App extends Component {
 
   validateIndex(state, replace) {
     if (this.props.store.user) {
-      replace(`/add-kids`);
+      replace('/add-kids');
     }
   }
 
   validateAddKids(state, replace) {
     const kids = getKids(this.props.store.kids);
-
     if (kids.length) {
       replace('/kids');
     }
@@ -51,7 +50,7 @@ export default class App extends Component {
     }
   }
 
-  validateKidsAndFetch(state, replace) {
+  validateKids(state, replace) {
     const kids = getKids(this.props.store.kids);
     if (!kids.length) {
       replace('/add-kids');
