@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import router from 'helpers/router';
 import autobind from 'autobind-decorator';
 import Input from 'components/atoms/input';
 import Button from 'components/atoms/button';
@@ -58,5 +59,6 @@ export default class AddKid extends Component {
   onSubmit() {
     const names = this.state.names;
     names.forEach((name) => addKid(name, 3));
+    router.navigateToKids();
   }
 }
