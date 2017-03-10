@@ -18,7 +18,10 @@ export default class App extends Component {
     return (
       <Router history={ browserHistory }>
         <Route path="/" component={ Template }>
-          <Route path="kids" component={ KidsEvaluation } onEnter={ this.validateKids } />
+          <Route path="kids">
+            <Route path=":date" component={ KidsEvaluation } onEnter={ this.validateKidsAndFetch } />
+            <IndexRoute onEnter={ this.redirectToDate } />
+          </Route>
           <Route path="add-kids" component={ AddKids } onEnter={ this.validateAddKids } />
           <IndexRoute component={ Login } onEnter={ this.validateIndex }/>
         </Route>
@@ -26,14 +29,19 @@ export default class App extends Component {
     );
   }
 
+  redirectToDate(state, replace) {
+    replace(`/kids/${this.props.store.day}`);
+  }
+
   validateIndex(state, replace) {
     if (this.props.store.user) {
-      replace('/add-kids');
+      replace(`/add-kids`);
     }
   }
 
   validateAddKids(state, replace) {
     const kids = getKids(this.props.store.kids);
+
     if (kids.length) {
       replace('/kids');
     }
@@ -43,7 +51,7 @@ export default class App extends Component {
     }
   }
 
-  validateKids(state, replace) {
+  validateKidsAndFetch(state, replace) {
     const kids = getKids(this.props.store.kids);
     if (!kids.length) {
       replace('/add-kids');
@@ -58,6 +66,7 @@ export default class App extends Component {
 App.propTypes = {
   store: PropTypes.shape({
     kids: MobXPropTypes.observableObject,
-    user: MobXPropTypes.observableObject
+    user: MobXPropTypes.observableObject,
+    day: MobXPropTypes.observableObject
   })
 };
