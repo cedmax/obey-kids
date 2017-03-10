@@ -5,7 +5,7 @@ export default function Star(props) {
   return (
     <Sound
       playStatus={ Sound.status.PLAYING }
-      url={ `assets/audio/${props.direction}.mp3?refr` }
+      url={ `/assets/audio/${props.direction}.mp3?refr` }
     />
   );
 }

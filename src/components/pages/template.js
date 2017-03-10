@@ -13,7 +13,7 @@ export default function Template(props) {
     <div className={ style.block }>
       <header className={ style.header }>
         <h1>obey, kids</h1>
-        <h2>some sort of <img className={ style.icon } src="assets/svg/normal-star.svg" alt="star" /> Wars</h2>
+        <h2>some sort of <img className={ style.icon } src="/assets/svg/normal-star.svg" alt="star" /> Wars</h2>
       </header>
       <div className={ style.main }>{ props.children }</div>
       <footer className={ style.footer }>

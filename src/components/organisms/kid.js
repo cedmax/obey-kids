@@ -16,7 +16,7 @@ export default function Kid(props) {
       <h1 className={ style.title }>
         <img
           className={ style.icon }
-          src={ `assets/svg/icons/${iconSrc}.svg` }
+          src={ `/assets/svg/icons/${iconSrc}.svg` }
         />
 
         { name }<span> ({ stars })</span>
