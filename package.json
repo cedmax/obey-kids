@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "start": "node server.js",
-    "lint": "eslint src",
+    "lint": "esw --color --watch src",
     "bundle": "NODE_ENV=\"production\" webpack -p --config webpack.config.js",
-    "test": "jest",
+    "test": "esw --color src && jest",
     "test-watch": "jest --watch",
     "test-coverage": "jest --coverage"
   },
@@ -44,7 +44,6 @@
     "enzyme": "^2.7.1",
     "enzyme-to-json": "^1.5.0",
     "eslint": "^2.13.1",
-    "eslint-plugin-react": "^5.1.1",
     "extract-text-webpack-plugin": "1.0.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^19.0.2",
@@ -64,6 +63,8 @@
     "classnames": "^2.2.5",
     "convert-string": "^0.1.0",
     "digital-root": "^1.0.4",
+    "eslint-plugin-react": "^6.10.0",
+    "eslint-watch": "^3.0.1",
     "firebase": "^3.7.0",
     "firebase-rsvp": "^0.0.7",
     "mobase": "^0.1.2",
