@@ -1,22 +1,23 @@
 import databind from 'store/databind';
+import constants from 'store/constants';
 
 function normaliseStars(stars) {
-  return Math.min(Math.max(stars, 0), 3);
+  return Math.min(Math.max(stars, 0), constants.STARS);
 }
 
 function changeStar(kidName, action) {
   databind.getStars(kidName).then((stars) => {
-    const newStars = normaliseStars((action === 'up')?  ++stars : --stars);
+    const newStars = normaliseStars((action === constants.ACTION_UP)?  ++stars : --stars);
     databind.setStars(kidName, newStars);
   });
 }
 
 export function addStar(kidName) {
-  return () => changeStar(kidName, 'up');
+  return () => changeStar(kidName, constants.ACTION_UP);
 }
 
 export function removeStar(kidName) {
-  return () => changeStar(kidName, 'down');
+  return () => changeStar(kidName, constants.ACTION_DOWN);
 }
 
 export function addKid(kidName) {
@@ -24,5 +25,5 @@ export function addKid(kidName) {
 }
 
 export function setDay(day) {
-  databind.fetchData(day);
+  databind.getData(day);
 }
