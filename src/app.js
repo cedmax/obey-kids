@@ -52,11 +52,6 @@ export default class App extends Component {
   }
 
   validateKidsAndFetch(state, replace) {
-    const kids = getKids(this.props.store.kids);
-    if (!kids.length) {
-      replace('/add-kids');
-    }
-
     if (!this.props.store.user) {
       replace('/');
     }
