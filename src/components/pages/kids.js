@@ -1,10 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { observer, inject } from 'mobx-react';
+import Navigation from 'components/molecules/navigation';
 import Kid from 'components/organisms/kid';
 
 @inject('store')
 @observer
-export default class KidsEvaluation extends Component {
+export default class Kids extends Component {
   render() {
     const {
       kids
@@ -18,12 +19,15 @@ export default class KidsEvaluation extends Component {
       />
     ));
     return (
-      <div>{kidsComponents}</div>
+      <div>
+        {kidsComponents}
+        <Navigation />
+      </div>
     );
   }
 }
 
-KidsEvaluation.propTypes = {
+Kids.propTypes = {
   store: PropTypes.shape({
     kids: PropTypes.arrayOf(PropTypes.shape({
       name: PropTypes.string.isRequired
