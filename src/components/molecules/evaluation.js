@@ -19,7 +19,7 @@ export default class Evaluation extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.date !== this.props.date) {
       this.setState({
-        direction: null,
+        direction: null
       });
     }
   }

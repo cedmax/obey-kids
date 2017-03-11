@@ -31,6 +31,7 @@ export default class Kids extends Component {
 
 Kids.propTypes = {
   store: PropTypes.shape({
+    day: PropTypes.string.isRequired,
     kids: PropTypes.arrayOf(PropTypes.shape({
       name: PropTypes.string.isRequired
     })).isRequired,

@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "start": "node server.js",
-    "lint": "esw --color --watch src",
+    "lint": "esw --color --watch src test",
     "bundle": "NODE_ENV=\"production\" webpack -p --config webpack.config.js",
-    "test": "esw --color src && jest",
+    "test": "esw --color src test && jest",
     "test-watch": "jest --watch",
     "test-coverage": "jest --coverage"
   },

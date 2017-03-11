@@ -12,7 +12,7 @@ class Store {
   constructor() {
     this.kidsMap = observable.map({});
   }
-  
+
   @action.bound setUser(user) {
     this.user = user;
   }

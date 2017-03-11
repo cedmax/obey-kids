@@ -32,6 +32,7 @@ export default function Kid(props) {
 }
 
 Kid.propTypes = {
+  date: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   stars: PropTypes.number.isRequired
 };

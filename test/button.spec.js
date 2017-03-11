@@ -5,10 +5,11 @@ import Button from 'components/atoms/button';
 it('should apply the className to the wrapping element', () => {
   const onClick = jest.fn();
   const wrapper = shallow(
-    <Button 
-      onClick={onClick}
+    <Button
+      onClick={ onClick }
       text="My Button"
-      className="btn" />
+      className="btn"
+    />
   );
   expect(wrapper.prop('className')).toEqual('btn');
 });
@@ -16,10 +17,11 @@ it('should apply the className to the wrapping element', () => {
 it('should insert the text in the button', () => {
   const onClick = jest.fn();
   const wrapper = shallow(
-    <Button 
-      onClick={onClick}
+    <Button
+      onClick={ onClick }
       text="My Button"
-      className="btn" />
+      className="btn"
+    />
   );
   expect(wrapper.text()).toEqual('My Button');
 });
@@ -27,10 +29,11 @@ it('should insert the text in the button', () => {
 it('should trigger the onClick', () => {
   const onClick = jest.fn();
   const wrapper = shallow(
-    <Button 
-      onClick={onClick}
+    <Button
+      onClick={ onClick }
       text="My Button"
-      className="btn" />
+      className="btn"
+    />
   );
   wrapper.simulate('click');
   expect(onClick).toBeCalled();

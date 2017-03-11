@@ -2,7 +2,7 @@ import constants from 'store/constants';
 import moment from 'moment';
 
 function today() {
-  return moment().format(constants.DATE_FORMAT)
+  return moment().format(constants.DATE_FORMAT);
 }
 
 function prev(date) {
