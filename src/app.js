@@ -4,8 +4,9 @@ import { Router, IndexRoute, Route, browserHistory } from 'react-router';
 import autobind from 'autobind-decorator';
 import Login from 'components/pages/login';
 import AddKids from 'components/pages/add-kids';
-import KidsEvaluation from 'components/pages/kids-evaluation';
+import Kids from 'components/pages/kids';
 import Template from 'components/pages/template';
+import { setDay } from 'store/actions';
 
 function getKids(kidsObj) {
   return Object.keys(kidsObj);
@@ -19,7 +20,7 @@ export default class App extends Component {
       <Router history={ browserHistory }>
         <Route path="/" component={ Template }>
           <Route path="kids">
-            <Route path=":date" component={ KidsEvaluation } onEnter={ this.validateKids } />
+            <Route path=":date" component={ Kids } onEnter={ this.validateKidsAndFetch } />
             <IndexRoute onEnter={ this.redirectToDate } />
           </Route>
           <Route path="add-kids" component={ AddKids } onEnter={ this.validateAddKids } />
@@ -50,7 +51,7 @@ export default class App extends Component {
     }
   }
 
-  validateKids(state, replace) {
+  validateKidsAndFetch(state, replace) {
     const kids = getKids(this.props.store.kids);
     if (!kids.length) {
       replace('/add-kids');
@@ -59,6 +60,8 @@ export default class App extends Component {
     if (!this.props.store.user) {
       replace('/');
     }
+
+    setDay(state.params.date);
   }
 }
 
