@@ -4,6 +4,10 @@ class Store {
   @observable user = null;
   @observable kids = {};
   @observable day = '';
+  @observable direction = {
+    prev: false,
+    next: false
+  };
 
   @action.bound setUser(user) {
     this.user = user;
@@ -13,6 +17,10 @@ class Store {
     name && extendObservable(this.kids, {
       [name]: stars
     });
+  }
+
+  @action.bound enableNav(direction, value) {
+    this.direction[direction] = value;
   }
 
   @action.bound setDay(day) {
