@@ -20,15 +20,15 @@ function getStars(kidName) {
   });
 }
 
-function checkPrevNextDate(kidSnapshot, date) {
-  const prev = getDates.prev(date);
+function checkNext(kidSnapshot, date) {
   const next = getDates.next(date);
-  store.enableNav('prev', !isNaN(parseInt(kidSnapshot.child(prev).val(), 10)) && prev);
-  store.enableNav('next', !isNaN(parseInt(kidSnapshot.child(next).val(), 10)) && next);
+  store.enableNext(!isNaN(parseInt(kidSnapshot.child(next).val(), 10)) && next);
 }
 
 function getData(date) {
+  date = date || getDates.today();
   store.setDay(date);
+
   if (!store.user) return;
   return new Promise((resolve) => {
     database.ref(store.user).on('value', (userSnapshot) => {
@@ -41,7 +41,7 @@ function getData(date) {
         } else {
           setStars(kidName);
         }
-        checkPrevNextDate(kidSnapshot, date);
+        checkNext(kidSnapshot, date);
       });
       resolve(date);
     });

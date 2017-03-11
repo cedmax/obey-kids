@@ -58,7 +58,7 @@ export default class AddKid extends Component {
 
   onSubmit() {
     const names = this.state.names;
-    names.forEach((name) => addKid(name, 3));
+    names.forEach((name) => addKid(name));
     router.navigateToKids();
   }
 }

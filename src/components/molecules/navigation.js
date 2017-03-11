@@ -12,15 +12,13 @@ export default class Navigation extends Component {
   render() {
     const {
       day,
-      direction: {
-        prev, next
-      }
+      next
     } = this.props.store;
 
     const formattedDate = getDates.pretty(day);
     return (
       <div className={ style.block }>
-        <a onClick={ this.movePrev } style={{ visibility: prev ? 'visible':'hidden'}}> PREV </a>
+        <a onClick={ this.movePrev }> PREV </a>
         { formattedDate }
         <a onClick={ this.moveNext } style={{ visibility: next ? 'visible':'hidden'}}> NEXT </a>
       </div>
@@ -39,9 +37,6 @@ export default class Navigation extends Component {
 Navigation.propTypes = {
   store: PropTypes.shape({
     day: PropTypes.string.isRequired,
-    direction: PropTypes.shape({
-      prev: PropTypes.bool.isRequired,
-      next: PropTypes.bool.isRequired
-    }).isRequired
+    next: PropTypes.bool.isRequired
   })
 };

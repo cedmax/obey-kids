@@ -19,19 +19,12 @@ export default class App extends Component {
     return (
       <Router history={ browserHistory }>
         <Route path="/" component={ Template }>
-          <Route path="kids">
-            <Route path=":date" component={ Kids } onEnter={ this.validateKidsAndFetch } />
-            <IndexRoute onEnter={ this.redirectToDate } />
-          </Route>
+          <Route path="kids(/:date)" component={ Kids } onEnter={ this.validateKidsAndFetch } />
           <Route path="add-kids" component={ AddKids } onEnter={ this.validateAddKids } />
           <IndexRoute component={ Login } onEnter={ this.validateIndex }/>
         </Route>
       </Router>
     );
-  }
-
-  redirectToDate(state, replace) {
-    replace(`/kids/${this.props.store.day}`);
   }
 
   validateIndex(state, replace) {

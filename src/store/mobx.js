@@ -3,10 +3,7 @@ import { observable, action, computed } from 'mobx';
 class Store {
   @observable user = null;
   @observable day = '';
-  @observable direction = {
-    prev: false,
-    next: false
-  };
+  @observable next = false;
 
   @computed get kids() {
     return this.kidsMap.toJS();
@@ -24,8 +21,8 @@ class Store {
     name && this.kidsMap.set(name, stars);
   }
 
-  @action.bound enableNav(direction, value) {
-    this.direction[direction] = value;
+  @action.bound enableNext(value) {
+    this.next = value;
   }
 
   @action.bound setDay(day) {

@@ -41,6 +41,10 @@ export default class Star extends Component {
 
 Star.propTypes = {
   active: PropTypes.bool.isRequired,
+  animation: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool
+  ]).isRequired,
   selected: PropTypes.bool.isRequired,
   type: PropTypes.string.isRequired,
   onClick: React.PropTypes.oneOfType([
