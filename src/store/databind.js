@@ -3,8 +3,6 @@ import store from 'store/mobx';
 import constants from 'store/constants';
 import getDates from 'helpers/get-dates';
 
-let userSnapshot;
-
 function setStars(kidName, value) {
   if (typeof value === 'undefined') {
     value = constants.STARS;
@@ -31,20 +29,22 @@ function checkPrevNextDate(kidSnapshot, date) {
 
 function getData(date) {
   store.setDay(date);
-  if (!userSnapshot) return;
+  if (!store.user) return;
   return new Promise((resolve) => {
-    userSnapshot.forEach((kidSnapshot) => {
-      const kidName = kidSnapshot.key;
+    database.ref(store.user).on('value', (userSnapshot) => {
+      userSnapshot.forEach((kidSnapshot) => {
+        const kidName = kidSnapshot.key;
 
-      const childData = kidSnapshot.child(date);
-      if (!isNaN(parseInt(childData.val(), 10))) {
-        store.setKid(kidName, childData.val());
-      } else {
-        setStars(kidName);
-      }
-      checkPrevNextDate(kidSnapshot, date);
+        const childData = kidSnapshot.child(date);
+        if (!isNaN(parseInt(childData.val(), 10))) {
+          store.setKid(kidName, childData.val());
+        } else {
+          setStars(kidName);
+        }
+        checkPrevNextDate(kidSnapshot, date);
+      });
+      resolve(date);
     });
-    resolve(date);
   });
 }
 
@@ -56,7 +56,6 @@ function getUser(userId) {
       store.setUser(userId);
 
       if (snapshot.exists()) {
-        userSnapshot = snapshot;
         resolve(date);
       } else {
         reject(userId);
