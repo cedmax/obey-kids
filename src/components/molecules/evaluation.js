@@ -26,10 +26,12 @@ export default class Evaluation extends Component {
 
   render() {
     const starsComponents = stars.map(this.mapStars(this.props.name, this.props.stars));
+
     let soundElm;
     if (this.state.direction) {
-      soundElm = <Beep position={ 0 } direction={ this.state.direction } onFinishedPlaying={ () => this.setState({ direction: null }) } />;
+      soundElm = <Beep direction={ this.state.direction } onEnd={ this.stopAudio } />;
     }
+
     return (
       <div className={ style.wrapper }>
         {starsComponents}
@@ -38,6 +40,11 @@ export default class Evaluation extends Component {
     );
   }
 
+  stopAudio() {
+    this.setState({
+      direction: null
+    });
+  }
   mapStars(name, starCount) {
     return (star, i) => {
       const isSelected = (i < starCount);
