@@ -8,11 +8,13 @@ import Kid from 'components/organisms/kid';
 export default class Kids extends Component {
   render() {
     const {
-      kids
+      kids,
+      day
     } = this.props.store;
 
     const kidsComponents = Object.keys(kids).map((kidName) => (
       <Kid
+        date={ day }
         key={ kidName }
         stars={ kids[kidName] }
         name={ kidName }

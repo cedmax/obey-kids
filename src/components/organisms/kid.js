@@ -6,7 +6,8 @@ import style from 'styles/kid.scss';
 export default function Kid(props) {
   const {
     name,
-    stars
+    stars,
+    date
   } = props;
 
   const iconSrc = stringToDigit(name);
@@ -22,6 +23,7 @@ export default function Kid(props) {
         { name }<span> ({ stars })</span>
       </h1>
       <Evaluation
+        date={ date }
         name={ name }
         stars={ stars }
       />
