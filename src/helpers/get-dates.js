@@ -2,23 +2,23 @@ import constants from 'store/constants';
 import moment from 'moment';
 
 function today() {
-  return moment().format(constants.DATE_FORMAT);
+  return moment().format(constants.URL_FORMAT);
 }
 
 function prev(date) {
-  return moment(date, constants.DATE_FORMAT)
+  return moment(date, constants.URL_FORMAT)
     .subtract(1, 'days')
-    .format(constants.DATE_FORMAT);
+    .format(constants.URL_FORMAT);
 }
 
 function next(date) {
-  return moment(date, constants.DATE_FORMAT)
+  return moment(date, constants.URL_FORMAT)
     .add(1, 'days')
-    .format(constants.DATE_FORMAT);
+    .format(constants.URL_FORMAT);
 }
 
 function pretty(date) {
-  return moment(date, constants.DATE_FORMAT).format('DD/MM/YYYY');
+  return moment(date, constants.URL_FORMAT).format(constants.DATE_FORMAT);
 }
 
 function upUntilNow(date) {

@@ -5,6 +5,7 @@ import better from 'svg/better-star.svg';
 import boom from 'svg/boom-star.svg';
 import cx from 'classnames';
 import style from 'styles/star.scss';
+import constants from 'store/constants';
 
 const stars = {
   normal,
@@ -27,8 +28,8 @@ export default class Star extends Component {
       [style.active]: active,
       [style.selected]: selected,
       'animated': !!animation,
-      'headShake': (animation === 'down'),
-      'tada': (animation === 'up')
+      'headShake': (animation === constants.ACTION_DOWN),
+      'tada': (animation === constants.ACTION_UP)
     });
 
     return (
