@@ -3,7 +3,10 @@ import style from 'styles/navigation.scss';
 import getDates from 'helpers/get-dates';
 import autobind from 'autobind-decorator';
 import { observer, inject } from 'mobx-react';
+import SVGInline from 'react-svg-inline';
 import router from 'helpers/router';
+import prevIcon from 'svg/prev.svg';
+import nextIcon from 'svg/next.svg';
 
 @inject('store')
 @observer
@@ -18,9 +21,13 @@ export default class Navigation extends Component {
     const formattedDate = getDates.pretty(day);
     return (
       <div className={ style.block }>
-        <a onClick={ this.movePrev }> PREV </a>
+        <div className={ style.arrow }>
+          <SVGInline onClick={ this.movePrev } svg={ prevIcon } />
+        </div>
         { formattedDate }
-        <a onClick={ this.moveNext } style={{ visibility: next ? 'visible':'hidden'}}> NEXT </a>
+        <div className={ style.arrow } style={{ visibility: next ? 'visible':'hidden'}}>
+          <SVGInline onClick={ this.moveNext } svg={ nextIcon } />
+        </div>
       </div>
     );
   }
