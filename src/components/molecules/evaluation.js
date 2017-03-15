@@ -46,6 +46,7 @@ export default class Evaluation extends Component {
       direction: null
     });
   }
+
   mapStars(name, starCount) {
     return (star, i) => {
       const isSelected = (i < starCount);
