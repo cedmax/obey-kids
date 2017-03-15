@@ -20,7 +20,7 @@ export default function Template(props) {
         Star Wars is a Disney intellectual property.<br/>
         Star Wars icons by <a onClick={ onClick } href="https://dribbble.com/shots/2383021-Star-Wars-Icons-Freebie">Justas Galaburda</a>,
         font by <a onClick={ onClick } href="http://www.dafont.com/shyfonts.d11">Shyfonts</a>,
-        <br/> Svgs by <a onClick={ onClick } href="http://emojione.com/">Emoji one/</a> &
+        <br/> Svgs by <a onClick={ onClick } href="http://emojione.com/">Emoji one</a> &
         made with <span className={ style.heart } dangerouslySetInnerHTML={{__html: '&hearts;' }} /> by <a onClick={ onClick } href="https://cedmax.com/">cedmax</a>.
       </footer>
     </div>
