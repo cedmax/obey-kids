@@ -29,7 +29,7 @@ function checkNext(kidSnapshot, date) {
   store.enableNext(!isNaN(parseInt(kidSnapshot.child(next).val(), 10)) && next);
 }
 
-function grabGraphData(kidSnapshot, name, date) {
+function getGraphData(kidSnapshot, name, date) {
   let weekDate = date;
   while (weekDate !== getDates.prev(date, 7)) {
     handleKidsSnapshot(kidSnapshot, weekDate, (kidName, stars) => {
@@ -64,7 +64,7 @@ function getData(date) {
           checkNext(kidSnapshot, date);
         });
         if (!store.graphData[kidSnapshot.key]) {
-          grabGraphData(kidSnapshot, kidSnapshot.key, date);
+          getGraphData(kidSnapshot, kidSnapshot.key, date);
         }
       });
 
