@@ -6,6 +6,7 @@ import { observer, inject } from 'mobx-react';
 import SVGInline from 'react-svg-inline';
 import router from 'helpers/router';
 import prevIcon from 'svg/prev.svg';
+import graphIcon from 'svg/graph.svg';
 import nextIcon from 'svg/next.svg';
 
 @inject('store')
@@ -25,9 +26,12 @@ export default class Navigation extends Component {
           <SVGInline onClick={ this.movePrev } svg={ prevIcon } />
         </div>
         { formattedDate }
-        <div className={ style.arrow } style={{ visibility: next ? 'visible':'hidden'}}>
+        <div className={ `${style.arrow} ${next ? '' : style.disabled}` }>
           <SVGInline onClick={ this.moveNext } svg={ nextIcon } />
         </div>
+        <div className={ style.graph }>
+          <a><SVGInline onClick={ this.moveNext } svg={ graphIcon } /> show graph</a>
+        </div> 
       </div>
     );
   }

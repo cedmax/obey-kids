@@ -20,4 +20,23 @@
   margin: 10px;
   vertical-align: middle;
   cursor: pointer;
+
+  &.disabled {
+    svg circle {
+      opacity: .2
+    }
+  }
+}
+
+.graph {
+  display: none;
+  margin-top: 30px;
+  font-size: 80%;
+  span {
+    max-width: 15px;
+    vertical-align: middle;
+    background: white;
+    padding: 1px;
+    display: inline-block;
+  }
 }
