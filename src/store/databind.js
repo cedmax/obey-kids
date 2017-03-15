@@ -3,13 +3,17 @@ import store from 'store/mobx';
 import constants from 'store/constants';
 import getDates from 'helpers/get-dates';
 
-function setStars(kidName, value) {
+function setDbStars(kidName, date, value) {
   if (typeof value === 'undefined') {
     value = constants.STARS;
   }
 
+  database.ref(`${store.user}/${kidName}/${date}`).set(value);
+}
+
+function setStars(kidName, value) {
+  setDbStars(kidName, store.day, value);
   store.setKid(kidName, value);
-  database.ref(`${store.user}/${kidName}/${store.day}`).set(value);
 }
 
 function getStars(kidName) {
@@ -25,6 +29,28 @@ function checkNext(kidSnapshot, date) {
   store.enableNext(!isNaN(parseInt(kidSnapshot.child(next).val(), 10)) && next);
 }
 
+function grabGraphData(kidSnapshot, name, date) {
+  let weekDate = date;
+  while (weekDate !== getDates.prev(date, 7)) {
+    handleKidsSnapshot(kidSnapshot, weekDate, (kidName, stars) => {
+      weekDate = getDates.prev(weekDate);
+      store.addToGraph(kidName, stars, weekDate);
+    });
+  }
+}
+
+function handleKidsSnapshot(kidSnapshot, date, callback) {
+  const kidName = kidSnapshot.key;
+
+  const childData = kidSnapshot.child(date);
+  if (!isNaN(parseInt(childData.val(), 10))) {
+    callback(kidName, childData.val());
+  } else {
+    setDbStars(kidName, date);
+    callback(kidName, constants.STARS);
+  }
+}
+
 function getData(date) {
   date = date || getDates.today();
   store.setDay(date);
@@ -33,16 +59,15 @@ function getData(date) {
   return new Promise((resolve) => {
     database.ref(store.user).on('value', (userSnapshot) => {
       userSnapshot.forEach((kidSnapshot) => {
-        const kidName = kidSnapshot.key;
-
-        const childData = kidSnapshot.child(date);
-        if (!isNaN(parseInt(childData.val(), 10))) {
-          store.setKid(kidName, childData.val());
-        } else {
-          setStars(kidName);
+        handleKidsSnapshot(kidSnapshot, date, (name, stars) => {
+          store.setKid(name, stars);
+          checkNext(kidSnapshot, date);
+        });
+        if (!store.graphData[kidSnapshot.key]) {
+          grabGraphData(kidSnapshot, kidSnapshot.key, date);
         }
-        checkNext(kidSnapshot, date);
       });
+
       resolve(date);
     });
   });

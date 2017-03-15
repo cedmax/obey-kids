@@ -9,8 +9,13 @@ class Store {
     return this.kidsMap.toJS();
   }
 
+  @computed get graphData() {
+    return this.kidsGraphMap.toJS();
+  }
+
   constructor() {
     this.kidsMap = observable.map({});
+    this.kidsGraphMap = observable.map({});
   }
 
   @action.bound setUser(user) {
@@ -23,6 +28,17 @@ class Store {
 
   @action.bound enableNext(value) {
     this.next = value;
+  }
+
+  @action.bound addToGraph(kidName, stars, day) {
+    let toAssign = {
+      [day]: stars
+    };
+
+    if (this.kidsGraphMap.has(kidName)) {
+      toAssign = Object.assign(this.kidsGraphMap.get(kidName), toAssign);
+    }
+    this.kidsGraphMap.set(kidName, toAssign);
   }
 
   @action.bound setDay(day) {

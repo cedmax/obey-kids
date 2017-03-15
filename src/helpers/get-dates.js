@@ -5,9 +5,9 @@ function today() {
   return moment().format(constants.URL_FORMAT);
 }
 
-function prev(date) {
+function prev(date, amount) {
   return moment(date, constants.URL_FORMAT)
-    .subtract(1, 'days')
+    .subtract(amount || 1, 'days')
     .format(constants.URL_FORMAT);
 }
 
