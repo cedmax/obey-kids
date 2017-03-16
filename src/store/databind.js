@@ -33,8 +33,8 @@ function getGraphData(kidSnapshot, name, date) {
   let weekDate = date;
   while (weekDate !== getDates.prev(date, 7)) {
     handleKidsSnapshot(kidSnapshot, weekDate, (kidName, stars) => {
-      weekDate = getDates.prev(weekDate);
       graph.addToGraph(kidName, stars, weekDate);
+      weekDate = getDates.prev(weekDate);
     });
   }
 }
