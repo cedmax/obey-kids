@@ -37,11 +37,11 @@ export default class Navigation extends Component {
   }
 
   movePrev() {
-    router.navigateToKids(getDates.prev(this.props.day));
+    router.navigateToKids(getDates.prev(this.props.view.day));
   }
 
   moveNext() {
-    router.navigateToKids(getDates.next(this.props.day));
+    router.navigateToKids(getDates.next(this.props.view.day));
   }
 }
 
