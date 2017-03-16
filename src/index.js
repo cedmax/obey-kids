@@ -3,7 +3,11 @@ import { Provider } from 'mobx-react';
 import { AppContainer } from 'react-hot-loader';
 import { render } from 'react-dom';
 import App from 'app';
-import store from 'store/mobx';
+import {
+  user,
+  view,
+  graph
+} from 'store/mobx';
 import Promise from 'promise-polyfill';
 
 if (!window.Promise) {
@@ -12,7 +16,7 @@ if (!window.Promise) {
 
 render(
   <AppContainer>
-    <Provider store={ store }>
+    <Provider user={ user } view={ view } graph={ graph }>
       <App  />
     </Provider>
   </AppContainer>,
@@ -25,7 +29,7 @@ if (module.hot) {
 
     render(
       <AppContainer>
-        <Provider store={ store }>
+        <Provider user={ user } view={ view } graph={ graph }>
           <NextApp />
         </Provider>
       </AppContainer>,
