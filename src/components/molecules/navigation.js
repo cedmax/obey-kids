@@ -16,21 +16,33 @@ export default class Navigation extends Component {
   render() {
     const {
       day,
-      next
+      next, 
+      showGraph,
+      graphMode,
+      hideGraph
     } = this.props.view;
 
-    const formattedDate = getDates.pretty(day);
+    let mainNav;
+    if (!graphMode) {
+      const formattedDate = getDates.pretty(day);
+      mainNav = (
+        <div>
+          <div className={ style.arrow }>
+            <SVGInline onClick={ this.movePrev } svg={ prevIcon } />
+          </div>
+          <span className={ graphMode ? style.disabled : null }>{ formattedDate }</span>
+          <div className={ `${style.arrow} ${next ? '' : style.disabled}` }>
+            <SVGInline onClick={ next ? this.moveNext : null } svg={ nextIcon } />
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div className={ style.block }>
-        <div className={ style.arrow }>
-          <SVGInline onClick={ this.movePrev } svg={ prevIcon } />
-        </div>
-        { formattedDate }
-        <div className={ `${style.arrow} ${next ? '' : style.disabled}` }>
-          <SVGInline onClick={ next ? this.moveNext : null } svg={ nextIcon } />
-        </div>
+        {mainNav}
         <div className={ style.graph }>
-          <a><SVGInline onClick={ this.moveNext } svg={ graphIcon } /> show graph</a>
+          <a onClick={ graphMode ? hideGraph : showGraph }><SVGInline svg={ graphIcon } /> Show Graphs</a>
         </div>
       </div>
     );
@@ -48,6 +60,9 @@ export default class Navigation extends Component {
 Navigation.propTypes = {
   view: PropTypes.shape({
     day: PropTypes.string,
-    next: PropTypes.bool
+    next: PropTypes.bool,
+    graphMode: PropTypes.bool,
+    showGraph: PropTypes.func,
+    hideGraph: PropTypes.func
   })
 };

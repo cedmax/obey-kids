@@ -20,19 +20,16 @@
   margin: 10px;
   vertical-align: middle;
   cursor: pointer;
-
-  &.disabled {
-    pointer-events: none;
-    cursor: default;
-    
-    svg circle {
-      opacity: .2
-    }
-  }
 }
 
+.disabled {
+  pointer-events: none;
+  cursor: default;
+  opacity: .2
+}
+
+
 .graph {
-  display: none;
   margin-top: 30px;
   font-size: 80%;
   span {
