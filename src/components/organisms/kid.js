@@ -1,34 +1,56 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
 import Evaluation from 'components/molecules/evaluation';
 import stringToDigit from 'helpers/string-to-digit';
 import style from 'styles/kid.scss';
+import Graph from 'components/molecules/graph';
+import { observer, inject } from 'mobx-react';
 
-export default function Kid(props) {
-  const {
-    name,
-    stars,
-    date
-  } = props;
+@inject('view')
+@observer
+export default class Kid extends Component {
+  render() {
+    const {
+      view: {
+        graphMode
+      },
+      name,
+      stars,
+      date
+    } = this.props;
 
-  const iconSrc = stringToDigit(name);
-
-  return (
-    <div className={ style.body }>
-      <h1 className={ style.title }>
-        <img
-          className={ style.icon }
-          src={ `/assets/svg/icons/${iconSrc}.svg` }
+    const iconSrc = stringToDigit(name);
+    let bodyElm;
+    if (graphMode) {
+      bodyElm = ( 
+        <Graph
+          name={ name }
         />
+      );
+    } else {
+      bodyElm = (
+        <Evaluation
+          date={ date }
+          name={ name }
+          stars={ stars }
+        />
+      )
+    }
 
-        { name }<span> ({ stars })</span>
-      </h1>
-      <Evaluation
-        date={ date }
-        name={ name }
-        stars={ stars }
-      />
-    </div>
-  );
+
+    return (
+      <div className={ style.body }>
+        <h1 className={ style.title }>
+          <img
+            className={ style.icon }
+            src={ `/assets/svg/icons/${iconSrc}.svg` }
+          />
+
+          { name }<span> ({ stars })</span>
+        </h1>
+        { bodyElm }
+      </div>
+    );
+  }
 }
 
 Kid.propTypes = {
