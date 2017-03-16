@@ -3,6 +3,7 @@ import { observable, action, computed } from 'mobx';
 class ViewStore {
   @observable day = '';
   @observable next = false;
+  @observable graphMode = false;
 
   @computed get kids() {
     return this.kidsMap.toJS();
@@ -22,6 +23,14 @@ class ViewStore {
 
   @action.bound setDay(day) {
     this.day = day;
+  }
+
+  @action.bound hideGraph() {
+    this.graphMode = false
+  }
+
+  @action.bound showGraph() {
+    this.graphMode = true
   }
 }
 
