@@ -1,34 +1,34 @@
-import constants from 'store/constants';
-import moment from 'moment';
+import constants from 'store/constants'
+import moment from 'moment'
 
-function today() {
-  return moment().format(constants.URL_FORMAT);
+function today () {
+  return moment().format(constants.URL_FORMAT)
 }
 
-function prev(date, amount) {
+function prev (date, amount) {
   return moment(date, constants.URL_FORMAT)
     .subtract(amount || 1, 'days')
-    .format(constants.URL_FORMAT);
+    .format(constants.URL_FORMAT)
 }
 
-function next(date) {
+function next (date) {
   return moment(date, constants.URL_FORMAT)
     .add(1, 'days')
-    .format(constants.URL_FORMAT);
+    .format(constants.URL_FORMAT)
 }
 
-function pretty(date) {
-  return moment(date, constants.URL_FORMAT).format(constants.DATE_FORMAT);
+function pretty (date) {
+  return moment(date, constants.URL_FORMAT).format(constants.DATE_FORMAT)
 }
 
-function upUntilNow(date) {
-  const results = [];
-  const refDate = today();
+function upUntilNow (date) {
+  const results = []
+  const refDate = today()
   while (date !== refDate) {
-    date = next(date);
-    results.push(date);
+    date = next(date)
+    results.push(date)
   }
-  return results;
+  return results
 }
 export default {
   today,
@@ -36,4 +36,4 @@ export default {
   next,
   pretty,
   upUntilNow
-};
+}

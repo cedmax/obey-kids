@@ -1,31 +1,31 @@
-import React, { Component, PropTypes } from 'react';
-import { observer, inject } from 'mobx-react';
-import Navigation from 'components/molecules/navigation';
-import Kid from 'components/organisms/kid';
+import React, { Component, PropTypes } from 'react'
+import { observer, inject } from 'mobx-react'
+import Navigation from 'components/molecules/navigation'
+import Kid from 'components/organisms/kid'
 
 @inject('view')
 @observer
 export default class Kids extends Component {
-  render() {
+  render () {
     const {
       kids,
       day
-    } = this.props.view;
+    } = this.props.view
 
     const kidsComponents = Object.keys(kids).map((kidName) => (
       <Kid
-        date={ day }
-        key={ kidName }
-        stars={ kids[kidName] }
-        name={ kidName }
+        date={day}
+        key={kidName}
+        stars={kids[kidName]}
+        name={kidName}
       />
-    ));
+    ))
     return (
       <div>
         {kidsComponents}
         <Navigation />
       </div>
-    );
+    )
   }
 }
 
@@ -36,4 +36,4 @@ Kids.propTypes = {
       name: PropTypes.string.isRequired
     })).isRequired
   })
-};
+}

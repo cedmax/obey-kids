@@ -1,65 +1,65 @@
-import React, { Component, PropTypes } from 'react';
-import { inject, PropTypes as MobXPropTypes } from 'mobx-react';
-import { Router, IndexRoute, Route, browserHistory } from 'react-router';
-import autobind from 'autobind-decorator';
-import Login from 'components/pages/login';
-import AddKids from 'components/pages/add-kids';
-import Kids from 'components/pages/kids';
-import Template from 'components/pages/template';
-import { setDay } from 'store/actions';
+import React, { Component, PropTypes } from 'react'
+import { inject, PropTypes as MobXPropTypes } from 'mobx-react'
+import { Router, IndexRoute, Route, browserHistory } from 'react-router'
+import autobind from 'autobind-decorator'
+import Login from 'components/pages/login'
+import AddKids from 'components/pages/add-kids'
+import Kids from 'components/pages/kids'
+import Template from 'components/pages/template'
+import { setDay } from 'store/actions'
 
-function getKids(kidsObj) {
-  return Object.keys(kidsObj);
+function getKids (kidsObj) {
+  return Object.keys(kidsObj)
 }
 
 @inject((stores) => {
   const {
     view,
     user
-  } = stores;
+  } = stores
 
   return {
     view,
     user
-  };
+  }
 })
 @autobind
 export default class App extends Component {
-  render() {
+  render () {
     return (
-      <Router history={ browserHistory }>
-        <Route path="/" component={ Template }>
-          <Route path="kids(/:date)" component={ Kids } onEnter={ this.validateKidsAndFetch } />
-          <Route path="add-kids" component={ AddKids } onEnter={ this.validateAddKids } />
-          <IndexRoute component={ Login } onEnter={ this.validateIndex }/>
+      <Router history={browserHistory}>
+        <Route path='/' component={Template}>
+          <Route path='kids(/:date)' component={Kids} onEnter={this.validateKidsAndFetch} />
+          <Route path='add-kids' component={AddKids} onEnter={this.validateAddKids} />
+          <IndexRoute component={Login} onEnter={this.validateIndex} />
         </Route>
       </Router>
-    );
+    )
   }
 
-  validateIndex(state, replace) {
+  validateIndex (state, replace) {
     if (this.props.user.identity) {
-      replace('/add-kids');
+      replace('/add-kids')
     }
   }
 
-  validateAddKids(state, replace) {
-    const kids = getKids(this.props.view.kids);
+  validateAddKids (state, replace) {
+    const kids = getKids(this.props.view.kids)
     if (kids.length) {
-      replace('/kids');
+      replace('/kids')
     }
 
     if (!this.props.user.identity) {
-      replace('/');
+      replace('/')
     }
   }
 
-  validateKidsAndFetch(state, replace) {
+  validateKidsAndFetch (state, replace) {
     if (!this.props.user.identity) {
-      replace('/');
+      replace('/')
     }
 
-    setDay(state.params.date);
+    setDay(state.params.date)
   }
 }
 
@@ -70,4 +70,4 @@ App.propTypes = {
   user: PropTypes.shape({
     identity: MobXPropTypes.observableObject
   })
-};
+}

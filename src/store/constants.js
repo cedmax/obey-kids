@@ -4,7 +4,7 @@ export default {
   STARS: 3,
   ACTION_UP: 'up',
   ACTION_DOWN: 'down'
-};
+}
 
 export const graph = {
   options: {
@@ -48,4 +48,4 @@ export const graph = {
     borderColor: '#FFE81F',
     pointRadius: 0
   }
-};
+}

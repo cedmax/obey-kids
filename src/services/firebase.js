@@ -1,5 +1,5 @@
-import firebase from 'firebase';
-let env = 'prod';
+import firebase from 'firebase'
+let env = 'prod'
 const config = {
   dev: {
     apiKey: 'AIzaSyAjk2TSguMPkNzT4OGSUMvHLHJIf03VuaE',
@@ -15,12 +15,12 @@ const config = {
     storageBucket: 'kids-obey.appspot.com',
     messagingSenderId: '985182574504'
   }
-};
-
-if (window.location.hostname==='localhost') {
-  env = 'dev';
 }
 
-firebase.initializeApp(config[env]);
-export const database = firebase.database();
-export default firebase;
+if (window.location.hostname === 'localhost') {
+  env = 'dev'
+}
+
+firebase.initializeApp(config[env])
+export const database = firebase.database()
+export default firebase

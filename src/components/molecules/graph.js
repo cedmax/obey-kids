@@ -1,21 +1,21 @@
-import React, { PropTypes, Component } from 'react';
-import { observer, inject } from 'mobx-react';
-import { Line } from 'react-chartjs-2';
-import getDates from 'helpers/get-dates';
-import { graph as graphConst } from 'store/constants';
+import React, { PropTypes, Component } from 'react'
+import { observer, inject } from 'mobx-react'
+import { Line } from 'react-chartjs-2'
+import getDates from 'helpers/get-dates'
+import { graph as graphConst } from 'store/constants'
 
 @inject('graph')
 @observer
 export default class Graph extends Component {
-  render() {
+  render () {
     const {
       graph: {
         data
       },
       name
-    } = this.props;
+    } = this.props
 
-    const dataPoints = Object.keys(data[name]).sort();
+    const dataPoints = Object.keys(data[name]).sort()
     const chartData = {
       labels: dataPoints.map(getDates.pretty),
       datasets: [
@@ -23,11 +23,11 @@ export default class Graph extends Component {
           data: dataPoints.map((dataPoint) => data[name][dataPoint])
         })
       ]
-    };
+    }
 
     return (
-      <Line key={ name } data={ chartData } options={ graphConst.options } />
-    );
+      <Line key={name} data={chartData} options={graphConst.options} />
+    )
   }
 }
 
@@ -36,5 +36,4 @@ Graph.propTypes = {
   graph: PropTypes.shape({
     data: PropTypes.object
   })
-};
-
+}

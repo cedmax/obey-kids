@@ -1,14 +1,14 @@
-import React, { PropTypes, Component } from 'react';
-import Evaluation from 'components/molecules/evaluation';
-import stringToDigit from 'helpers/string-to-digit';
-import style from 'styles/kid.scss';
-import Graph from 'components/molecules/graph';
-import { observer, inject } from 'mobx-react';
+import React, { PropTypes, Component } from 'react'
+import Evaluation from 'components/molecules/evaluation'
+import stringToDigit from 'helpers/string-to-digit'
+import style from 'styles/kid.scss'
+import Graph from 'components/molecules/graph'
+import { observer, inject } from 'mobx-react'
 
 @inject('view')
 @observer
 export default class Kid extends Component {
-  render() {
+  render () {
     const {
       view: {
         graphMode
@@ -16,39 +16,39 @@ export default class Kid extends Component {
       name,
       stars,
       date
-    } = this.props;
+    } = this.props
 
-    const iconSrc = stringToDigit(name);
-    let bodyElm;
+    const iconSrc = stringToDigit(name)
+    let bodyElm
     if (graphMode) {
       bodyElm = (
         <Graph
-          name={ name }
+          name={name}
         />
-      );
+      )
     } else {
       bodyElm = (
         <Evaluation
-          date={ date }
-          name={ name }
-          stars={ stars }
+          date={date}
+          name={name}
+          stars={stars}
         />
-      );
+      )
     }
 
     return (
-      <div className={ style.body }>
-        <h1 className={ style.title }>
+      <div className={style.body}>
+        <h1 className={style.title}>
           <img
-            className={ style.icon }
-            src={ `/assets/svg/icons/${iconSrc}.svg` }
+            className={style.icon}
+            src={`/assets/svg/icons/${iconSrc}.svg`}
           />
 
           { name }<span> ({ stars })</span>
         </h1>
         { bodyElm }
       </div>
-    );
+    )
   }
 }
 
@@ -59,4 +59,4 @@ Kid.propTypes = {
   view: PropTypes.shape({
     graphMode: PropTypes.bool
   })
-};
+}

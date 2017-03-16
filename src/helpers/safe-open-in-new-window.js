@@ -1,3 +1,3 @@
-import blankshield from 'blankshield';
+import blankshield from 'blankshield'
 
-export default blankshield.open;
+export default blankshield.open
