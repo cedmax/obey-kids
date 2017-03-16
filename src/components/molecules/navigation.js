@@ -9,7 +9,7 @@ import prevIcon from 'svg/prev.svg';
 import graphIcon from 'svg/graph.svg';
 import nextIcon from 'svg/next.svg';
 
-@inject('store')
+@inject('view')
 @observer
 @autobind
 export default class Navigation extends Component {
@@ -17,7 +17,7 @@ export default class Navigation extends Component {
     const {
       day,
       next
-    } = this.props.store;
+    } = this.props.view;
 
     const formattedDate = getDates.pretty(day);
     return (
@@ -27,27 +27,27 @@ export default class Navigation extends Component {
         </div>
         { formattedDate }
         <div className={ `${style.arrow} ${next ? '' : style.disabled}` }>
-          <SVGInline onClick={ this.moveNext } svg={ nextIcon } />
+          <SVGInline onClick={ next ? this.moveNext : null } svg={ nextIcon } />
         </div>
         <div className={ style.graph }>
           <a><SVGInline onClick={ this.moveNext } svg={ graphIcon } /> show graph</a>
-        </div> 
+        </div>
       </div>
     );
   }
 
   movePrev() {
-    router.navigateToKids(getDates.prev(this.props.store.day));
+    router.navigateToKids(getDates.prev(this.props.day));
   }
 
   moveNext() {
-    router.navigateToKids(getDates.next(this.props.store.day));
+    router.navigateToKids(getDates.next(this.props.day));
   }
 }
 
 Navigation.propTypes = {
-  store: PropTypes.shape({
-    day: PropTypes.string.isRequired,
-    next: PropTypes.bool.isRequired
+  view: PropTypes.shape({
+    day: PropTypes.string,
+    next: PropTypes.bool
   })
 };

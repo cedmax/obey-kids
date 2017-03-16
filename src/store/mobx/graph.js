@@ -1,7 +1,7 @@
 import { observable, action, computed } from 'mobx';
 
 class GraphStore {
-  @computed get graphData() {
+  @computed get data() {
     return this.kidsGraphMap.toJS();
   }
 

@@ -1,10 +1,10 @@
 import { observable, action, computed } from 'mobx';
 
 class UserStore {
-  @observable user = null;
+  @observable identity = null;
 
   @action.bound setUser(user) {
-    this.user = user;
+    this.identity = user;
   }
 }
 

@@ -12,7 +12,17 @@ function getKids(kidsObj) {
   return Object.keys(kidsObj);
 }
 
-@inject('store')
+@inject((stores) => {
+  const {
+    view,
+    user
+  } = stores;
+
+  return {
+    view,
+    user
+  };
+})
 @autobind
 export default class App extends Component {
   render() {
@@ -28,24 +38,24 @@ export default class App extends Component {
   }
 
   validateIndex(state, replace) {
-    if (this.props.store.user) {
+    if (this.props.user.identity) {
       replace('/add-kids');
     }
   }
 
   validateAddKids(state, replace) {
-    const kids = getKids(this.props.store.kids);
+    const kids = getKids(this.props.view.kids);
     if (kids.length) {
       replace('/kids');
     }
 
-    if (!this.props.store.user) {
+    if (!this.props.user.identity) {
       replace('/');
     }
   }
 
   validateKidsAndFetch(state, replace) {
-    if (!this.props.store.user) {
+    if (!this.props.user.identity) {
       replace('/');
     }
 
@@ -54,9 +64,10 @@ export default class App extends Component {
 }
 
 App.propTypes = {
-  store: PropTypes.shape({
-    kids: MobXPropTypes.observableObject,
-    user: MobXPropTypes.observableObject,
-    day: MobXPropTypes.observableObject
+  view: PropTypes.shape({
+    kids: MobXPropTypes.observableObject
+  }),
+  user: PropTypes.shape({
+    identity: MobXPropTypes.observableObject
   })
 };
