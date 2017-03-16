@@ -1,22 +1,23 @@
+@import 'assets/styles/colors';
+
 .block {
+  filter: drop-shadow(10px 10px 20px $black);
+  left: 50%;
   position: absolute;
   top: 50%;
-  left: 50%;
   transform: translate3d(-50%, -50%, 0);
-  filter: drop-shadow(10px 10px 20px black);
 }
 
 .button {
-  font-family: Helvetica,sans-serif;
-  font-weight: 700;
-  -webkit-font-smoothing: antialiased;
-  color: #fff;
+  background-color: $lightblue;
+  border: calc(.06887vw + .67769px) solid $lightblue;
+  color: $white;
   cursor: pointer;
   display: inline-block;
+  font-family: Helvetica, sans-serif;
   font-size: calc(.27548vw + 12.71074px);
+  font-weight: 700;
+  padding: calc(.34435vw + 13.38843px) calc(.34435vw + 18.38843px);
   text-decoration: none;
   text-transform: uppercase;
-  background-color: #4c69ba;
-  border: calc(.06887vw + .67769px) solid #4c69ba;
-  padding: calc(.34435vw + 13.38843px) calc(.34435vw + 18.38843px);
 }

@@ -1,19 +1,23 @@
+@import 'assets/styles/colors';
+
 .star {
+  filter: grayscale(100%) drop-shadow(5px 5px 3px $black);
   flex: 0 0 30%;
-  filter: grayscale(100%) drop-shadow(5px 5px 3px black);
-  opacity: 0.6;
+  opacity: .6;
 
   svg {
     width: 100%;
   }
 
-  &:first-child svg  {
-    transform: translateY(-3%);
+  &:first-child {
+    svg  {
+      transform: translateY(-3%);
+    }
   }
 }
 
 .selected {
-  filter: drop-shadow(15px 15px 10px black);
+  filter: drop-shadow(15px 15px 10px $black);
   opacity: 1;
 }
 

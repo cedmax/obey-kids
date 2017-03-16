@@ -1,42 +1,40 @@
+@import 'assets/styles/colors';
+
 .block {
-  text-align: center;
   font-family: 'distant-galaxy';
   font-size: 150%;
   margin: 0 0 50px;
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none;
+  text-align: center;
+  user-select: none;
+
   a {
     cursor: pointer;
   }
 }
 
 .arrow {
+  cursor: pointer;
   display: inline-block;
-  width: 25px;
   margin: 10px;
   vertical-align: middle;
-  cursor: pointer;
+  width: 25px;
 }
 
 .disabled {
-  pointer-events: none;
   cursor: default;
-  opacity: .2
+  opacity: .2;
+  pointer-events: none;
 }
 
-
 .graph {
-  margin-top: 30px;
   font-size: 80%;
+  margin-top: 30px;
+
   span {
-    max-width: 15px;
-    vertical-align: middle;
-    background: white;
-    padding: 1px;
+    background: $white;
     display: inline-block;
+    max-width: 15px;
+    padding: 1px;
+    vertical-align: middle;
   }
 }

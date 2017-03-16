@@ -1,21 +1,23 @@
+@import 'assets/styles/colors';
+
 .wrapper {
   display: flex;
   justify-content: space-around;
   padding: 5px 10px 50px 15px;
 }
 
-.block { 
+.block {
   margin: 0 3%;
 }
 
-.title {        
+.title {
   display: inline-block;
-  padding: 0 5px;
   font-family: 'distant-galaxy';
+  font-size: calc(1rem + 16 * (100vw - 320px) / (960 - 320));
+  padding: 0 5px;
   text-transform: lowercase;
-  font-size: calc( 1rem + 16 * (100vw - 320px) / (960 - 320));
   white-space: pre;
-  
+
   span {
     font-family: system-ui, Helvetica Neue;
     font-size: 50%;
@@ -24,30 +26,30 @@
 }
 
 .icon {
-  width: 46px;
   margin-left: -15px;
   vertical-align: middle;
+  width: 46px;
 }
 
 .add {
-  color: white;
-  text-decoration: underline;
-  padding-left: 10px;
-  cursor: pointer;
-  border: none;
   background: none;
+  border: 0;
+  color: $white;
+  cursor: pointer;
   font-size: 90%;
+  padding-left: 10px;
+  text-decoration: underline;
 }
 
 .confirm {
-  text-align: center;
   margin-top: 50px;
+  text-align: center;
 }
 
-.confirmButton {
-  border: solid 1px darkblue;
-  background: white;
-  padding: 10px 15px;
-  font-size: 100%;
+.confirmbutton {
+  background: $white;
+  border: solid 1px $darkblue;
   cursor: pointer;
+  font-size: 100%;
+  padding: 10px 15px;
 }

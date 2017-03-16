@@ -31,7 +31,7 @@ export default class AddKid extends Component {
         }) }
 
         <div className={ style.confirm }>
-          <Button className={ style.confirmButton } onClick={ this.onSubmit } text="Confirm" />
+          <Button className={ style.confirmbutton } onClick={ this.onSubmit } text="Confirm" />
         </div>
       </div>
     );
