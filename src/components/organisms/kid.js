@@ -21,7 +21,7 @@ export default class Kid extends Component {
     const iconSrc = stringToDigit(name);
     let bodyElm;
     if (graphMode) {
-      bodyElm = ( 
+      bodyElm = (
         <Graph
           name={ name }
         />
@@ -33,9 +33,8 @@ export default class Kid extends Component {
           name={ name }
           stars={ stars }
         />
-      )
+      );
     }
-
 
     return (
       <div className={ style.body }>
@@ -56,5 +55,8 @@ export default class Kid extends Component {
 Kid.propTypes = {
   date: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  stars: PropTypes.number.isRequired
+  stars: PropTypes.number.isRequired,
+  view: PropTypes.shape({
+    graphMode: PropTypes.bool
+  })
 };

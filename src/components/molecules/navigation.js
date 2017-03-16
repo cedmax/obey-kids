@@ -16,7 +16,7 @@ export default class Navigation extends Component {
   render() {
     const {
       day,
-      next, 
+      next,
       showGraph,
       graphMode,
       hideGraph

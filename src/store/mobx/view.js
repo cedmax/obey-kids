@@ -26,11 +26,11 @@ class ViewStore {
   }
 
   @action.bound hideGraph() {
-    this.graphMode = false
+    this.graphMode = false;
   }
 
   @action.bound showGraph() {
-    this.graphMode = true
+    this.graphMode = true;
   }
 }
 

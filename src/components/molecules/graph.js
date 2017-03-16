@@ -38,4 +38,3 @@ Graph.propTypes = {
   })
 };
 
-
