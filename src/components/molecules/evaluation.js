@@ -4,6 +4,7 @@ import style from 'styles/kid.scss'
 import autobind from 'autobind-decorator'
 import { addStar, removeStar } from 'store/actions'
 import Beep from 'components/atoms/beep'
+import StarAnimation from 'components/molecules/star-animation'
 import constants from 'store/constants'
 
 const stars = ['normal', 'better', 'boom']
@@ -49,33 +50,33 @@ export default class Evaluation extends Component {
 
   mapStars (name, starCount) {
     return (star, i) => {
-      const isGoingDown = (i === starCount) && (this.state.direction === constants.ACTION_DOWN)
-      const isGoingUp = (i === starCount - 1) && (this.state.direction === constants.ACTION_UP)
-
-      const isAnimated = isGoingDown || isGoingUp
       const isSelected = (i < starCount)
       const isActive = (i === starCount || i === starCount - 1)
       const onClick = isSelected ? () => {
-        removeStar(name)()
+        removeStar(name)
         this.setState({
           direction: constants.ACTION_DOWN
         })
       } : () => {
-        addStar(name)()
+        addStar(name)
         this.setState({
           direction: constants.ACTION_UP
         })
       }
 
       return (
-        <Star
-          animation={isAnimated && this.state.direction}
-          onClick={isActive && onClick}
+        <StarAnimation
+          direction={this.state.direction}
+          starCount={starCount}
+          index={i}
           key={star}
-          type={star}
-          selected={isSelected}
-          active={isActive}
-        />
+        >
+          <Star
+            onClick={isActive && onClick}
+            type={star}
+            selected={isSelected}
+          />
+        </StarAnimation>
       )
     }
   }

@@ -5,7 +5,6 @@ import better from 'svg/better-star.svg'
 import boom from 'svg/boom-star.svg'
 import cx from 'classnames'
 import style from 'styles/star.scss'
-import constants from 'store/constants'
 
 const stars = {
   normal,
@@ -17,19 +16,14 @@ export default class Star extends Component {
   render () {
     const {
       selected,
-      active,
       type,
-      onClick,
-      animation
+      onClick
     } = this.props
 
     const star = stars[type]
     const className = cx(style.star, {
-      [style.active]: active,
-      [style.selected]: selected,
-      'animated': !!animation,
-      'headShake': (animation === constants.ACTION_DOWN),
-      'tada': (animation === constants.ACTION_UP)
+      [style.active]: !!onClick,
+      [style.selected]: selected
     })
 
     return (
@@ -41,11 +35,6 @@ export default class Star extends Component {
 }
 
 Star.propTypes = {
-  active: PropTypes.bool.isRequired,
-  animation: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.bool
-  ]).isRequired,
   selected: PropTypes.bool.isRequired,
   type: PropTypes.string.isRequired,
   onClick: React.PropTypes.oneOfType([

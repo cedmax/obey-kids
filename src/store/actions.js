@@ -13,11 +13,11 @@ function changeStar (kidName, action) {
 }
 
 export function addStar (kidName) {
-  return () => changeStar(kidName, constants.ACTION_UP)
+  changeStar(kidName, constants.ACTION_UP)
 }
 
 export function removeStar (kidName) {
-  return () => changeStar(kidName, constants.ACTION_DOWN)
+  changeStar(kidName, constants.ACTION_DOWN)
 }
 
 export function addKid (kidName) {
