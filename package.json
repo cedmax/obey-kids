@@ -9,9 +9,6 @@
     "test:watch": "jest --watch"
   },
   "jest": {
-    "setupFiles": [
-      "./jest.js"
-    ],
     "moduleDirectories": [
       "node_modules",
       "src",
