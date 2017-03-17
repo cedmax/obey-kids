@@ -28,6 +28,7 @@ export default class StarAnimation extends Component {
 }
 
 StarAnimation.propTypes = {
+  children: PropTypes.node,
   direction: PropTypes.string,
   total: PropTypes.number.isRequired,
   current: PropTypes.number.isRequired

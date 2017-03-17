@@ -10,7 +10,7 @@ export default class Login extends Component {
         className={style.block}
       >
         <Button
-          text='Login with Facebook'
+          text="Login with Facebook"
           className={style.button}
           onClick={login}
         />

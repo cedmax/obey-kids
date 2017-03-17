@@ -7,8 +7,8 @@ it('should apply the className to the wrapping element', () => {
   const wrapper = shallow(
     <Button
       onClick={onClick}
-      text='My Button'
-      className='btn'
+      text="My Button"
+      className="btn"
     />
   )
   expect(wrapper.prop('className')).toEqual('btn')
@@ -19,8 +19,8 @@ it('should insert the text in the button', () => {
   const wrapper = shallow(
     <Button
       onClick={onClick}
-      text='My Button'
-      className='btn'
+      text="My Button"
+      className="btn"
     />
   )
   expect(wrapper.text()).toEqual('My Button')
@@ -31,8 +31,8 @@ it('should trigger the onClick', () => {
   const wrapper = shallow(
     <Button
       onClick={onClick}
-      text='My Button'
-      className='btn'
+      text="My Button"
+      className="btn"
     />
   )
   wrapper.simulate('click')

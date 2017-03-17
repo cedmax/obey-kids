@@ -11,7 +11,7 @@ it('should render an active and selected star', () => {
     <Star
       selected
       onClick={() => {}}
-      type='normal'
+      type="normal"
     />
   )
 
@@ -25,7 +25,7 @@ it('should render a active star', () => {
     <Star
       onClick={() => {}}
       selected={false}
-      type='normal'
+      type="normal"
     />
   )
 
@@ -38,7 +38,7 @@ it('should render a without animations', () => {
   const wrapper = shallow(
     <Star
       selected={false}
-      type='normal'
+      type="normal"
     />
   )
 
@@ -50,7 +50,7 @@ it('should render with the right icon', () => {
   const wrapper = shallow(
     <Star
       selected
-      type='normal'
+      type="normal"
     />
   )
 
@@ -75,7 +75,7 @@ it('should have a clickable svg', () => {
     <Star
       onClick={onClick}
       selected
-      type='normal'
+      type="normal"
     />
   )
 

@@ -25,13 +25,13 @@ export default class AddKid extends Component {
           return (
             <div key={i}>
               <Input onChange={this.onChange(i)} value={name} />
-              <Button className={style.add} onClick={this.moreKids} text='add' />
+              <Button className={style.add} onClick={this.moreKids} text="add" />
             </div>
           )
         }) }
 
         <div className={style.confirm}>
-          <Button className={style.confirmbutton} onClick={this.onSubmit} text='Confirm' />
+          <Button className={style.confirmbutton} onClick={this.onSubmit} text="Confirm" />
         </div>
       </div>
     )
