@@ -14,6 +14,7 @@ function setDbStars (kidName, date, value) {
 function setStars (kidName, value) {
   setDbStars(kidName, view.day, value)
   view.setKid(kidName, value)
+  graph.updateGraph(kidName, value, view.day)
 }
 
 function getStars (kidName) {
