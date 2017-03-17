@@ -20,49 +20,43 @@ export default class Evaluation extends Component {
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.date !== this.props.date) {
-      this.setState({
-        direction: null
-      })
+      this.resetDirection()
     }
   }
 
   render () {
     const starsComponents = stars.map(this.mapStars(this.props.name, this.props.stars))
 
-    let soundElm
-    if (this.state.direction) {
-      soundElm = <Beep direction={this.state.direction} onEnd={this.stopAudio} />
-    }
-
     return (
       <div className={style.wrapper}>
         {starsComponents}
-        {soundElm}
+        <Beep direction={this.state.direction} onEnd={this.resetDirection} />
       </div>
     )
   }
 
-  stopAudio () {
+  resetDirection () {
     this.setState({
       direction: null
     })
+  }
+
+  onStarClick (name, callback, direction) {
+    return () => {
+      callback(name)
+      this.setState({
+        direction
+      })
+    }
   }
 
   mapStars (name, starCount) {
     return (star, i) => {
       const isSelected = (i < starCount)
       const isActive = (i === starCount || i === starCount - 1)
-      const onClick = isSelected ? () => {
-        removeStar(name)
-        this.setState({
-          direction: constants.ACTION_DOWN
-        })
-      } : () => {
-        addStar(name)
-        this.setState({
-          direction: constants.ACTION_UP
-        })
-      }
+      const onClick = isSelected
+        ? this.onStarClick(name, removeStar, constants.ACTION_DOWN)
+        : this.onStarClick(name, addStar, constants.ACTION_UP)
 
       return (
         <Animation

@@ -13,12 +13,8 @@ import { observer, inject } from 'mobx-react'
 export default class Kid extends Component {
   render () {
     const {
-      view: {
-        graphMode
-      },
-      graph: {
-        total
-      },
+      view: { graphMode },
+      graph: { total },
       name,
       stars,
       date
@@ -27,19 +23,9 @@ export default class Kid extends Component {
     const iconSrc = stringToDigit(name)
     let bodyElm
     if (graphMode) {
-      bodyElm = (
-        <Graph
-          name={name}
-        />
-      )
+      bodyElm = (<Graph name={name} />)
     } else {
-      bodyElm = (
-        <Evaluation
-          date={date}
-          name={name}
-          stars={stars}
-        />
-      )
+      bodyElm = (<Evaluation date={date} name={name} stars={stars} />)
     }
 
     return (
@@ -64,5 +50,8 @@ Kid.propTypes = {
   stars: PropTypes.number.isRequired,
   view: PropTypes.shape({
     graphMode: PropTypes.bool
+  }),
+  graph: PropTypes.shape({
+    total: PropTypes.number
   })
 }

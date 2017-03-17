@@ -3,7 +3,7 @@ import Sound from 'react-sound'
 
 export default function Star (props) {
   return (
-    <Sound
+    props.direction && <Sound
       playStatus={Sound.status.PLAYING}
       onFinishedPlaying={props.onEnd}
       url={`/assets/audio/${props.direction}.mp3?refr`}
@@ -13,5 +13,5 @@ export default function Star (props) {
 
 Star.propTypes = {
   onEnd: PropTypes.func,
-  direction: PropTypes.string.isRequired
+  direction: PropTypes.string
 }
