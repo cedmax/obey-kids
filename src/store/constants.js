@@ -46,6 +46,6 @@ export const graph = {
     fill: true,
     backgroundColor: 'rgba(255,232,31, .2)',
     borderColor: '#FFE81F',
-    pointRadius: 0
+    pointRadius: 4
   }
 }

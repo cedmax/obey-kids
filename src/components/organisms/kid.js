@@ -5,13 +5,19 @@ import style from 'styles/kid.scss'
 import Graph from 'components/molecules/graph'
 import { observer, inject } from 'mobx-react'
 
-@inject('view')
+@inject((stores) => ({
+  view: stores.view,
+  graph: stores.graph
+}))
 @observer
 export default class Kid extends Component {
   render () {
     const {
       view: {
         graphMode
+      },
+      graph: {
+        total
       },
       name,
       stars,
@@ -44,7 +50,7 @@ export default class Kid extends Component {
             src={`/assets/svg/icons/${iconSrc}.svg`}
           />
 
-          { name }<span> ({ stars })</span>
+          { name }<span> ({ graphMode ? total[name] : stars })</span>
         </h1>
         { bodyElm }
       </div>
