@@ -29,20 +29,19 @@ class GraphStore {
   }
 
   @action.bound updateGraph (kidName, stars, day) {
-    const currentValue = this.kidsGraphMap.get(kidName)[day];
+    const currentValue = this.kidsGraphMap.get(kidName)[day]
 
     if (currentValue || currentValue === 0) {
       let toAssign = {
         [day]: stars
       }
-    
-      const toAdd = this.totalMap.get(kidName) - currentValue + stars;
+
+      const toAdd = this.totalMap.get(kidName) - currentValue + stars
       this.totalMap.set(kidName, toAdd)
 
       toAssign = Object.assign(this.kidsGraphMap.get(kidName), toAssign)
       this.kidsGraphMap.set(kidName, toAssign)
     }
-    
   }
 }
 
