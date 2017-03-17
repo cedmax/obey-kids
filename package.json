@@ -5,9 +5,8 @@
     "start": "node server.js",
     "lint": "esw --color --watch --fix src test",
     "bundle": "NODE_ENV=\"production\" webpack -p --config webpack.config.js",
-    "test": "esw --color --fix src test && jest",
-    "test-watch": "jest --watch",
-    "test-coverage": "jest --coverage"
+    "test": "esw --color --fix src test && jest --coverage",
+    "test:watch": "jest --watch"
   },
   "jest": {
     "setupFiles": [

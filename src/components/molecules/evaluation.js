@@ -4,7 +4,7 @@ import style from 'styles/kid.scss'
 import autobind from 'autobind-decorator'
 import { addStar, removeStar } from 'store/actions'
 import Beep from 'components/atoms/beep'
-import StarAnimation from 'components/molecules/star-animation'
+import Animation from 'components/atoms/animation'
 import constants from 'store/constants'
 
 const stars = ['normal', 'better', 'boom']
@@ -65,10 +65,10 @@ export default class Evaluation extends Component {
       }
 
       return (
-        <StarAnimation
+        <Animation
           direction={this.state.direction}
-          starCount={starCount}
-          index={i}
+          total={starCount}
+          current={i + 1}
           key={star}
         >
           <Star
@@ -76,7 +76,7 @@ export default class Evaluation extends Component {
             type={star}
             selected={isSelected}
           />
-        </StarAnimation>
+        </Animation>
       )
     }
   }

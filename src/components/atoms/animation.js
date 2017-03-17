@@ -6,17 +6,17 @@ export default class StarAnimation extends Component {
   render () {
     const {
       direction,
-      starCount,
-      index
+      total,
+      current
     } = this.props
 
-    const isGoingUp = (index === starCount - 1) && (direction === constants.ACTION_UP)
-    const isGoingDown = (index === starCount) && (direction === constants.ACTION_DOWN)
+    const itWentUp = (current === total) && (direction === constants.ACTION_UP)
+    const itWentDown = (current - 1 === total) && (direction === constants.ACTION_DOWN)
 
     const className = cx({
-      'animated': isGoingDown || isGoingUp,
-      'headShake': isGoingDown,
-      'tada': isGoingUp
+      'animated': itWentDown || itWentUp,
+      'headShake': itWentDown,
+      'tada': itWentUp
     })
 
     return (
@@ -29,6 +29,6 @@ export default class StarAnimation extends Component {
 
 StarAnimation.propTypes = {
   direction: PropTypes.string,
-  starCount: PropTypes.number.isRequired,
-  index: PropTypes.number.isRequired
+  total: PropTypes.number.isRequired,
+  current: PropTypes.number.isRequired
 }
