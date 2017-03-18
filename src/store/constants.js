@@ -3,7 +3,8 @@ export default {
   DATE_FORMAT: 'DD/MM/YYYY',
   STARS: 3,
   ACTION_UP: 'up',
-  ACTION_DOWN: 'down'
+  ACTION_DOWN: 'down',
+  GRAPH_LENGTH: 15
 }
 
 export const graph = {
