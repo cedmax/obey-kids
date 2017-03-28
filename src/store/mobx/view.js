@@ -1,9 +1,11 @@
 import { observable, action, computed } from 'mobx'
+import constants from 'store/constants'
 
 class ViewStore {
   @observable day = '';
   @observable next = false;
   @observable graphMode = false;
+  @observable graphSize = constants.GRAPH_LENGTH.fortnight
 
   @computed get kids () {
     return this.kidsMap.toJS()
@@ -31,6 +33,10 @@ class ViewStore {
 
   @action.bound showGraph () {
     this.graphMode = true
+  }
+
+  @action.bound resizeGraph (size) {
+    this.graphSize = size
   }
 }
 

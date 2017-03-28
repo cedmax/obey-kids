@@ -4,7 +4,11 @@ export default {
   STARS: 3,
   ACTION_UP: 'up',
   ACTION_DOWN: 'down',
-  GRAPH_LENGTH: 15
+  GRAPH_LENGTH: {
+    month: 30,
+    fortnight: 15,
+    week: 7
+  }
 }
 
 export const graph = {

@@ -38,3 +38,14 @@
     width: 15px;
   }
 }
+
+.graph {
+  a {
+    display: inline-block;
+    margin: 0 5px;
+  }
+
+  .selected {
+    text-decoration: underline;
+  }
+}

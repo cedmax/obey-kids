@@ -32,7 +32,7 @@ function checkNext (kidSnapshot, date) {
 
 function getGraphData (kidSnapshot, name, date) {
   let weekDate = date
-  while (weekDate !== getDates.prev(date, constants.GRAPH_LENGTH)) {
+  while (weekDate !== getDates.prev(date, constants.GRAPH_LENGTH.month)) {
     handleKidsSnapshot(kidSnapshot, weekDate, (kidName, stars) => {
       graph.addToGraph(kidName, stars, weekDate)
       weekDate = getDates.prev(weekDate)

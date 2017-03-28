@@ -8,6 +8,7 @@ import router from 'helpers/router'
 import prevIcon from 'svg/prev.svg'
 import graphIcon from 'svg/graph.svg'
 import nextIcon from 'svg/next.svg'
+import constants from 'store/constants'
 
 @inject('view')
 @observer
@@ -18,6 +19,8 @@ export default class Navigation extends Component {
       day,
       next,
       showGraph,
+      graphSize,
+      resizeGraph,
       graphMode,
       hideGraph
     } = this.props.view
@@ -36,13 +39,25 @@ export default class Navigation extends Component {
           </div>
         </div>
       )
+    } else {
+      mainNav = (
+        <div className={style.graph}>
+          {
+            Object.keys(constants.GRAPH_LENGTH).map((key) => {
+              const selected = (graphSize === constants.GRAPH_LENGTH[key]) ? style.selected : null
+              const onClick = () => resizeGraph(constants.GRAPH_LENGTH[key])
+              return (<a key={key} className={selected} onClick={onClick}>{key}</a>)
+            })
+          }
+        </div>
+      )
     }
 
     return (
       <div className={style.block}>
         {mainNav}
         <div className={style.graph}>
-          <a onClick={graphMode ? hideGraph : showGraph}><SVGInline svg={graphIcon} /> Show Graphs</a>
+          <a onClick={graphMode ? hideGraph : showGraph}><SVGInline svg={graphIcon} /> {graphMode ? 'Hide' : 'Show'} Graphs</a>
         </div>
       </div>
     )
@@ -62,6 +77,8 @@ Navigation.propTypes = {
     day: PropTypes.string,
     next: PropTypes.bool,
     graphMode: PropTypes.bool,
+    graphSize: PropTypes.number,
+    resizeGraph: PropTypes.func,
     showGraph: PropTypes.func,
     hideGraph: PropTypes.func
   })
