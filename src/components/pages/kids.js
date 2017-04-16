@@ -9,14 +9,15 @@ export default class Kids extends Component {
   render () {
     const {
       kids,
-      day
+      day,
+      starsToShow
     } = this.props.view
 
     const kidsComponents = Object.keys(kids).map((kidName) => (
       <Kid
         date={day}
         key={kidName}
-        stars={kids[kidName]}
+        stars={starsToShow[kidName]}
         name={kidName}
       />
     ))
@@ -34,6 +35,7 @@ Kids.propTypes = {
     day: PropTypes.string.isRequired,
     kids: PropTypes.arrayOf(PropTypes.shape({
       name: PropTypes.string.isRequired
-    })).isRequired
+    })).isRequired,
+    starsToShow: PropTypes.number.isRequired
   })
 }

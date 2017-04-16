@@ -14,7 +14,6 @@ export default class Kid extends Component {
   render () {
     const {
       view: { graphMode },
-      graph: { total },
       name,
       stars,
       date
@@ -36,7 +35,7 @@ export default class Kid extends Component {
             src={`/assets/svg/icons/${iconSrc}.svg`}
           />
 
-          { name }<span> ({ graphMode ? total[name] : stars })</span>
+          { name }<span> ({ stars })</span>
         </h1>
         { bodyElm }
       </div>
@@ -50,8 +49,5 @@ Kid.propTypes = {
   stars: PropTypes.number.isRequired,
   view: PropTypes.shape({
     graphMode: PropTypes.bool
-  }),
-  graph: PropTypes.shape({
-    total: PropTypes.number
   })
 }

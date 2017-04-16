@@ -1,11 +1,17 @@
 import { observable, action, computed } from 'mobx'
 import constants from 'store/constants'
+import graph from 'store/mobx/graph'
 
 class ViewStore {
   @observable day = '';
   @observable next = false;
   @observable graphMode = false;
   @observable graphSize = constants.GRAPH_LENGTH.fortnight
+  @computed get starsToShow () {
+    return (!this.graphMode)
+      ? this.kids
+      : graph.getTotal(this.graphSize)
+  }
 
   @computed get kids () {
     return this.kidsMap.toJS()

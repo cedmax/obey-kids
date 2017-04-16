@@ -22,6 +22,7 @@ export default class Graph extends Component {
       },
       name
     } = this.props
+
     const dataPoints = Object.keys(data[name]).sort().slice(-graphSize)
     const chartData = {
       labels: dataPoints.map(getDates.pretty),
