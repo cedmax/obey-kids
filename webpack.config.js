@@ -28,10 +28,7 @@ const cssLoaders = [{
 }, {
   loader: 'sass-loader'
 }, {
-  loader: 'autoprefixer-loader',
-  query: {
-    browsers:'last 2 versions'
-  }
+  loader: 'postcss-loader'
 }];
 
 let extractCSS = new ExtractTextPlugin('styles.css');
@@ -77,5 +74,12 @@ module.exports = {
       include: path.join(__dirname, 'assets'),
       loader: isProd ? extractCSS.extract('style-loader', combineLoaders(cssLoaders)): combineLoaders(cssLoaders)
     }]
-  }
+  },
+  postcss: () => [
+    require('autoprefixer')({ 
+      browsers: ['last 2 versions'],
+      flexbox: 'no-2009',
+      remove: true
+    })
+  ]
 };
