@@ -1,0 +1,14 @@
+{
+  "background_color": "#20222e",
+  "theme_color":  "#20222e",
+  "name": "Obey, kids!",
+  "short_name": "Obey, kids!",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "assets/icon.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }
+  ]
+}
