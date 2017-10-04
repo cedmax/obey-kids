@@ -1,0 +1,99 @@
+{
+  "name": "cedmax/obey-kids",
+  "version": "0.1.4",
+  "libraries": {
+    "xv": "^1.1.25"
+  },
+  "title": "Obey Kids",
+  "branch": "master",
+  "style": {
+    "name": "Brutalist",
+    "componentSet": {
+      "nav": "nav/BasicNav",
+      "header": "header/BasicHeader",
+      "article": "article/MarkdownArticle",
+      "footer": "footer/BasicFooter"
+    },
+    "fontFamily": "Consolas, \"Liberation Mono\", Menlo, Courier, monospace",
+    "heading": {},
+    "typeScale": [
+      48,
+      32,
+      20,
+      18,
+      16,
+      14,
+      12
+    ],
+    "layout": {
+      "maxWidth": 1024,
+      "fluid": true
+    },
+    "colors": {
+      "text": "#333",
+      "background": "#fff",
+      "primary": "#666",
+      "secondary": "#888",
+      "highlight": "#1f80ff",
+      "muted": "#f6f6f6",
+      "border": "#eee"
+    }
+  },
+  "content": [
+    {
+      "component": "nav",
+      "links": [
+        {
+          "href": "http://obk.it",
+          "text": "Home"
+        },
+        {
+          "href": "https://github.com/cedmax/obey-kids",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://npmjs.com/package/obey-kids",
+          "text": "npm"
+        }
+      ]
+    },
+    {
+      "component": "header",
+      "heading": "obey-kids",
+      "subhead": "✨ A star wars themed app to track the data of the system we use to get our Italian brat kids to behave",
+      "children": [
+        {
+          "component": "ui/TweetButton",
+          "text": "obey-kids: ✨ A star wars themed app to track the data of the system we use to get our Italian brat kids to behave",
+          "url": "http://obk.it"
+        },
+        {
+          "component": "ui/GithubButton",
+          "user": "cedmax",
+          "repo": "obey-kids"
+        }
+      ],
+      "text": "v1.0.0"
+    },
+    {
+      "component": "article",
+      "metadata": {
+        "source": "github.readme"
+      },
+      "html": "\n<p><em><a href=\"http://obk.it\">Obey, kids</a></em> is a Star Wars themed app to gain historical data of the gamification system we use to get our Italian brat kids to behave (<em>you have to picture Darth Vader saying it to his kids, it will all make sense all of a sudden</em>).</p>\n<p>The core concept is that they have 3 stars every day, which they can lose misbehaving (or get back, if they are better than usual). If they get through the day with all of them, they get rewards and there are stretch goals too.</p>\n<p>It was also an opportunity to get to work with css modules, mobx, firebase and stuff.</p>\n<p>Still missing charts, editable history, goals definitions and notifications, more emojis and animations. But collecting data it&apos;s a start.</p>\n<p><img src=\"https://raw.githubusercontent.com/cedmax/obey-kids/master/assets/screenshot.png\"></p>\n"
+    },
+    {
+      "component": "footer",
+      "links": [
+        {
+          "href": "https://github.com/cedmax/obey-kids",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://github.com/cedmax",
+          "text": "cedmax"
+        }
+      ]
+    }
+  ]
+}
