@@ -6,7 +6,9 @@
     "lint": "esw --color --watch --fix src test",
     "bundle": "NODE_ENV=\"production\" webpack -p --config webpack.config.js",
     "test": "esw --color --fix src test && jest --coverage",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "jest": {
     "moduleDirectories": [
@@ -83,6 +85,8 @@
     "react-router": "^3.0.2",
     "react-sound": "^0.5.2",
     "react-svg-inline": "^1.2.0",
-    "sw-toolbox": "^3.6.0"
-  }
+    "sw-toolbox": "^3.6.0",
+    "snyk": "^1.53.0"
+  },
+  "snyk": true
 }
