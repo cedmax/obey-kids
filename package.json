@@ -69,7 +69,7 @@
     "classnames": "^2.2.5",
     "convert-string": "^0.1.0",
     "digital-root": "^1.0.4",
-    "firebase": "^3.7.0",
+    "firebase": "^4.5.1",
     "firebase-rsvp": "^0.0.7",
     "mobase": "^0.1.2",
     "mobx": "^3.0.0",
